@@ -2,18 +2,19 @@ package Kelompok1_MiniProject1;
 /**
 * Mini Project 1: Sistem Point of Sale (PoS)
 * Bisnis: Ikan Bakar Muara - Pontianak
-* Kelompok: [Nama Anggota 1, 2, Violaine Gunawan (D1041241036)]
+* Kelompok: [Faliha Imtinan (D1041241004), Zalikhah Khairunnisa (D1041241018), Violaine Gunawan (D1041241036)]
 *
 * Pertemuan 16: Integrasi OOP Dasar
 */
-// ========== CLASS PRODUK ==========
+// ========== CLASS MENU ==========
 class Menu{
     String menuId;
     String menuNama;
     String menuStatus;
     String menuKategori;
     int menuHarga;
-    //Constructor
+
+    //Constructor untuk menginisialisasi data Menu
     public Menu(String menuId, String menuNama, String menuStatus, String menuKategori, int menuHarga){
         this.menuId = menuId;
         this.menuNama = menuNama;
@@ -21,7 +22,12 @@ class Menu{
         this.menuKategori = menuKategori;
         this.menuHarga = menuHarga;
     }
+<<<<<<< Updated upstream:Kelompok1_MiniProject1/Kelompok1_SistemPoS_IkanBakarMuara.java
     //Method tampil Menu
+=======
+
+    //Method untuk menampilkan Menu
+>>>>>>> Stashed changes:Kelompok1_SistemPoS_IkanBakarMuara.java
     public void tampilMenu(){
         System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
     }
@@ -35,17 +41,17 @@ public class Kelompok1_SistemPoS_IkanBakarMuara {
         System.out.println("║      Ikan Bakar Muara - Pontianak      ║");
         System.out.println("╚════════════════════════════════════════╝");
         
-        // 1. Membuat array produk (minimal 5)
+        // 1. Membuat array menu (minimal 5)
         Menu[] daftarMenu = new Menu[5];
         
-        // 2. Mengisi data produk
+        // 2. Mengisi data menu
         daftarMenu[0] = new Menu("M0001", "Nila Bakar Muara", "Tersedia", "Makanan", 26000);
         daftarMenu[1] = new Menu("M0002", "Nila Bakar Madu", "Tersedia", "Makanan", 26000);
         daftarMenu[2] = new Menu("M0003", "Nila Goreng", "Tersedia", "Makanan", 23000);
         daftarMenu[3] = new Menu("M0004", "Jeruk Kecil", "Tersedia", "Minuman", 8000);
         daftarMenu[4] = new Menu("M0005", "Lemon Tea", "Tersedia", "Minuman", 7000);
         
-        // 3. Menampilkan daftar produk
+        // 3. Menampilkan daftar menu
         System.out.println("════════════ DAFTAR MENU ════════════");
         for (int i = 0; i < daftarMenu.length; i++) {
             daftarMenu[i].tampilMenu();
@@ -54,25 +60,59 @@ public class Kelompok1_SistemPoS_IkanBakarMuara {
 
         // 4. Simulasi transaksi
         System.out.println("═══════════ TRANSAKSI BARU ══════════");
-        System.out.println("Tanggal: 27 Februari 2026");
+        System.out.println("Tanggal: 20 Februari 2026");
         System.out.println("Kasir  : Kelompok 1");
         System.out.println("─────────────────────────────────────");
-        
-        // Item 1: Nila Bakar Muara (qty 2)
-        int qty1 = 2;
+
+        // === TRANSAKSI 1 ===
+        // Item 1: Nila Bakar Muara (qty 1)
+        int qty1 = 1;
         double subtotal1 = daftarMenu[0].menuHarga * qty1;
         System.out.println("Item 1: " + daftarMenu[0].menuNama + " (" + qty1 + "x) - Rp " + subtotal1);
 
-        // Item 2: Nila Bakar Madu (qty 1)
-        int qty2 = 1;
+        // Item 2: Nila Bakar Madu (qty 2)
+        int qty2 = 2;
         double subtotal2 = daftarMenu[1].menuHarga * qty2;
         System.out.println("Item 2: " + daftarMenu[1].menuNama + " (" + qty2 + "x) - Rp " + subtotal2);
 
-        // Item 3: Jeruk Kecil (qty 2)
-        int qty3 = 2;
-        double subtotal3 = daftarMenu[3].menuHarga * qty3;
-        System.out.println("Item 3: " + daftarMenu[3].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
-        System.out.println("─────────────────────────────────────");
+        // Item 3: Lemon Tea (qty 3)
+        int qty3 = 3;
+        double subtotal3 = daftarMenu[4].menuHarga * qty3;
+        System.out.println("Item 3: " + daftarMenu[4].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
+        
+        // === TRANSAKSI 2 ===
+        // // Item 1: Nila Goreng (qty 1)
+        // int qty1 = 1;
+        // double subtotal1 = daftarMenu[2].menuHarga * qty1;
+        // System.out.println("Item 1: " + daftarMenu[2].menuNama + " (" + qty1 + "x) - Rp " + subtotal1);
+
+        // // Item 2: Nila Bakar Madu (qty 2)
+        // int qty2 = 2;
+        // double subtotal2 = daftarMenu[1].menuHarga * qty2;
+        // System.out.println("Item 2: " + daftarMenu[1].menuNama + " (" + qty2 + "x) - Rp " + subtotal2);
+
+        // // Item 3: Lemon Tea (qty 3)
+        // int qty3 = 3;
+        // double subtotal3 = daftarMenu[4].menuHarga * qty3;
+        // System.out.println("Item 3: " + daftarMenu[4].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
+        // System.out.println("─────────────────────────────────────");
+
+        // === TRANSAKSI 3 ===
+        // // Item 1: Nila Bakar Muara (qty 2)
+        // int qty1 = 2;
+        // double subtotal1 = daftarMenu[0].menuHarga * qty1;
+        // System.out.println("Item 1: " + daftarMenu[0].menuNama + " (" + qty1 + "x) - Rp " + subtotal1);
+
+        // // Item 2: Nila Bakar Madu (qty 1)
+        // int qty2 = 1;
+        // double subtotal2 = daftarMenu[1].menuHarga * qty2;
+        // System.out.println("Item 2: " + daftarMenu[1].menuNama + " (" + qty2 + "x) - Rp " + subtotal2);
+
+        // // Item 3: Jeruk Kecil (qty 2)
+        // int qty3 = 2;
+        // double subtotal3 = daftarMenu[3].menuHarga * qty3;
+        // System.out.println("Item 3: " + daftarMenu[3].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
+        // System.out.println("─────────────────────────────────────");
 
         // 5. Hitung total
         double total = subtotal1 + subtotal2 + subtotal3;
