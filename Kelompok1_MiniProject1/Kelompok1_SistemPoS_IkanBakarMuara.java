@@ -22,12 +22,8 @@ class Menu{
         this.menuKategori = menuKategori;
         this.menuHarga = menuHarga;
     }
-<<<<<<< Updated upstream:Kelompok1_MiniProject1/Kelompok1_SistemPoS_IkanBakarMuara.java
-    //Method tampil Menu
-=======
 
     //Method untuk menampilkan Menu
->>>>>>> Stashed changes:Kelompok1_SistemPoS_IkanBakarMuara.java
     public void tampilMenu(){
         System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
     }
