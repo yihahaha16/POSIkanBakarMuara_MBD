@@ -20,7 +20,7 @@ class Menu{
         this.menuKategori = menuKategori;
         this.menuHarga = menuHarga;
     }
-    //Method tampil produk
+    //Method tampil menu
     public void tampilMenu(){
         System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
     }
