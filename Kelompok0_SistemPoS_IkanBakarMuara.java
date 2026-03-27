@@ -58,11 +58,11 @@ public class Kelompok0_SistemPoS_IkanBakarMuara {
         System.out.println("Item 1: " + daftarMenu[0].menuNama + " (" + qty1 + "x) - Rp " + subtotal1);
 
         // Item 2: Nila Bakar Madu (qty 1)
-        int qty2 = 2;
+        int qty2 = 1;
         double subtotal2 = daftarMenu[1].menuHarga * qty2;
         System.out.println("Item 2: " + daftarMenu[1].menuNama + " (" + qty2 + "x) - Rp " + subtotal2);
 
-        // Item 3: Nila Bakar Muara (qty 2)
+        // Item 3: Jeruk Kecil (qty 2)
         int qty3 = 2;
         double subtotal3 = daftarMenu[3].menuHarga * qty3;
         System.out.println("Item 3: " + daftarMenu[3].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
