@@ -1,3 +1,4 @@
+package Kelompok1_MiniProject1;
 /**
 * Mini Project 1: Sistem Point of Sale (PoS)
 * Bisnis: Ikan Bakar Muara - Pontianak
@@ -20,17 +21,19 @@ class Menu{
         this.menuKategori = menuKategori;
         this.menuHarga = menuHarga;
     }
-    //Method tampil menu
+    //Method tampil Menu
     public void tampilMenu(){
         System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
     }
 }
 // ========== MAIN PROGRAM ==========
-public class Kelompok0_SistemPoS_IkanBakarMuara {
+public class Kelompok1_SistemPoS_IkanBakarMuara {
     public static void main(String[] args) {
         // Header sistem
-        System.out.println("=== SISTEM POINT OF SALE ===");
-        System.out.println("Bisnis: Ikan Bakar Muara - Pontianak\n");
+        System.out.println("╔════════════════════════════════════════╗");
+        System.out.println("║       SISTEM POINT OF SALE (PoS)       ║");
+        System.out.println("║      Ikan Bakar Muara - Pontianak      ║");
+        System.out.println("╚════════════════════════════════════════╝");
         
         // 1. Membuat array produk (minimal 5)
         Menu[] daftarMenu = new Menu[5];
@@ -43,14 +46,17 @@ public class Kelompok0_SistemPoS_IkanBakarMuara {
         daftarMenu[4] = new Menu("M0005", "Lemon Tea", "Tersedia", "Minuman", 7000);
         
         // 3. Menampilkan daftar produk
-        System.out.println("DAFTAR MENU:");
+        System.out.println("════════════ DAFTAR MENU ════════════");
         for (int i = 0; i < daftarMenu.length; i++) {
             daftarMenu[i].tampilMenu();
         }
         System.out.println();
 
         // 4. Simulasi transaksi
-        System.out.println("=== TRANSAKSI ===");
+        System.out.println("═══════════ TRANSAKSI BARU ══════════");
+        System.out.println("Tanggal: 27 Februari 2026");
+        System.out.println("Kasir  : Kelompok 1");
+        System.out.println("─────────────────────────────────────");
         
         // Item 1: Nila Bakar Muara (qty 2)
         int qty1 = 2;
@@ -66,14 +72,14 @@ public class Kelompok0_SistemPoS_IkanBakarMuara {
         int qty3 = 2;
         double subtotal3 = daftarMenu[3].menuHarga * qty3;
         System.out.println("Item 3: " + daftarMenu[3].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
-
-        System.out.println();
+        System.out.println("─────────────────────────────────────");
 
         // 5. Hitung total
         double total = subtotal1 + subtotal2 + subtotal3;
         System.out.println("SUBTOTAL: Rp " + total);
-        System.out.println("---");
+        System.out.println("─────────────────────────────────────");
         System.out.println("TOTAL: Rp " + total);
+        System.out.println("═════════════════════════════════════");
         System.out.println();
         System.out.println("Terima kasih telah berbelanja!");
     }
