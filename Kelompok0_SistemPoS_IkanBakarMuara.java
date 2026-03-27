@@ -52,5 +52,29 @@ public class Kelompok0_SistemPoS_IkanBakarMuara {
         // 4. Simulasi transaksi
         System.out.println("=== TRANSAKSI ===");
         
+        // Item 1: Nila Bakar Muara (qty 2)
+        int qty1 = 2;
+        double subtotal1 = daftarMenu[0].menuHarga * qty1;
+        System.out.println("Item 1: " + daftarMenu[0].menuNama + " (" + qty1 + "x) - Rp " + subtotal1);
+
+        // Item 2: Nila Bakar Madu (qty 1)
+        int qty2 = 2;
+        double subtotal2 = daftarMenu[1].menuHarga * qty2;
+        System.out.println("Item 2: " + daftarMenu[1].menuNama + " (" + qty2 + "x) - Rp " + subtotal2);
+
+        // Item 3: Nila Bakar Muara (qty 2)
+        int qty3 = 2;
+        double subtotal3 = daftarMenu[3].menuHarga * qty3;
+        System.out.println("Item 3: " + daftarMenu[3].menuNama + " (" + qty3 + "x) - Rp " + subtotal3);
+
+        System.out.println();
+
+        // 5. Hitung total
+        double total = subtotal1 + subtotal2 + subtotal3;
+        System.out.println("SUBTOTAL: Rp " + total);
+        System.out.println("---");
+        System.out.println("TOTAL: Rp " + total);
+        System.out.println();
+        System.out.println("Terima kasih telah berbelanja!");
     }
 }
