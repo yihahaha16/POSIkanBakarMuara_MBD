@@ -28,6 +28,27 @@ class Menu{
         System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
     }
 }
+
+class Member{
+    String nomorHp;
+    String namaLengkap;
+
+    public Member(String nomorHp, String namaLengkap){
+        this.nomorHp = nomorHp;
+        this.namaLengkap = namaLengkap;
+    }
+
+    public void tampilMember(){
+        System.out.println(nomorHp + " - " + namaLengkap);
+    }
+    //fitur diskon member
+}
+
+class Transaksi{
+    
+}
+
+
 // ========== MAIN PROGRAM ==========
 public class Kelompok1_SistemPoS_IkanBakarMuara {
     public static void main(String[] args) {
