@@ -29,6 +29,28 @@ class Menu{
     }
 }
 
+class Pelanggan{
+    String idPelanggan;
+    String nomorHp;
+    String namaLengkap;
+
+    public Pelanggan(String idPelanggan){
+        this.idPelanggan = idPelanggan;
+        nomorHp = "-";
+        namaLengkap = "-";
+    }
+
+    public Pelanggan(String idPelanggan, String nomorHp, String namaLengkap){
+        this.idPelanggan = idPelanggan;
+        this.nomorHp = nomorHp;
+        this.namaLengkap = namaLengkap;
+    }
+
+    public void tampilPelanggan(){
+        System.out.println(idPelanggan + " - " + nomorHp + " - " + namaLengkap);
+    }
+}
+
 class Member{
     String nomorHp;
     String namaLengkap;
@@ -44,8 +66,9 @@ class Member{
     //fitur diskon member
 }
 
-class Transaksi{
-    
+class Pesanan{
+    String pesananTanggal;
+
 }
 
 
