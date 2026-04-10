@@ -9,7 +9,7 @@ class Persegi { // Class Persegi
     public Persegi(int sisi) {
         if (sisi <= 0) {
             System.out.println("ERROR: Sisi tidak boleh <= 0. Diset ke default (1).");
-            this.sisi = 1; // kalau sisi <= 0, maka defaultnya jadi 1
+            this.sisi = 1; // jika sisi <= 0, maka nilai defaul akan menjadi 1
         } else {
             this.sisi = sisi;
         }
