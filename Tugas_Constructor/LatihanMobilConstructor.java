@@ -12,6 +12,7 @@ class Mobil{ //Class Mobil
     }
 
     public Mobil(String merk){//Constructor dengan parameter merk dan menggunakan this
+        this.merk = merk;
         warna = "Belum diisi";
         tahun = 0;
     }
