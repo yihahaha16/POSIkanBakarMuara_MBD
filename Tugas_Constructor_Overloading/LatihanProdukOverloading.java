@@ -7,7 +7,7 @@ class Produk{//class produk
     public Produk(String namaProduk, int harga){//Constructor Overloading 1: dengan dua parameter
         this.namaProduk = namaProduk;
         this.harga = harga;
-        stok = 0;
+        this.stok = 0;
     }
     public Produk(String namaProduk, int harga, int stok){//Constructor Overloading 2: dengan tiga parameter
         this.namaProduk = namaProduk;
