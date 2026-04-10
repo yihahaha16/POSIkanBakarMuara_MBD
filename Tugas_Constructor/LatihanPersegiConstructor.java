@@ -1,4 +1,5 @@
 package Tugas_Constructor;
+
 class Persegi { // Class Persegi
     // Atribut yang digunakan untuk class Persegi
     int sisi;
