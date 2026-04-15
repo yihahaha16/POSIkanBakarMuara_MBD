@@ -132,21 +132,41 @@ class Pelanggan{
     String pelangganId;
     String pelangganNoHP;
     String pelangganNama;
-    String pelangganStatus;
+    Status status;
 
     // utk input data pelanggan dan bedakan status
-    public Pelanggan(String pelangganId, String pelangganNoHP, String pelangganNama, String pelangganStatus){ 
+    public Pelanggan(String pelangganId, String pelangganNoHP, String pelangganNama, Status status){ 
         this.pelangganId = pelangganId;
         this.pelangganNoHP = pelangganNoHP;
         this.pelangganNama = pelangganNama;
-        this.pelangganStatus = pelangganStatus;   
+        this.status = status;   
     }
 
-    public void inputPelanggan(){
+    public void pesanDineIn(){
+        
+    }
+
+    public void pesanTakeAway(){
 
     }
 }
 
+class Member extends Pelanggan{
+    int poin = 0;
+    String estimasiKedatangan;
+
+    public void tambahPoin(){
+        poin += ...; // (total bayar/10) kah?
+    }
+    
+    public void pesanOnline(){
+        
+    }
+}
+
+class Reguler extends Pelanggan{
+    //bingung ape isinye
+}
 class PembayaranCash implements MetodePembayaran {
     public void bayar(int total) {
         System.out.println("Bayar cash: " + total);
