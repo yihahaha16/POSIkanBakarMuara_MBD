@@ -1,9 +1,8 @@
 package Tugas1;
 
 interface MetodePembayaran {
-    void bayar(int total);
+    public void bayar(int total);
 }
-
 
 class Menu{
     String menuId;
@@ -77,7 +76,8 @@ class PembayaranDebit implements MetodePembayaran {
 
 public class Tugas1 {
     public static void main(String[] args) {
-        PembayaranDebit pelanggan1 = new PembayaranDebit();
-        pelanggan1.bayar(80000);
+        // PembayaranDebit pelanggan1 = new PembayaranDebit();
+        // pelanggan1.bayar(80000);
+        
     }
 }
