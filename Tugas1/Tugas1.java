@@ -26,13 +26,104 @@ class Menu{
     }
 }
 
-class Pesanan(){
-    String tanggalPesanan;
+// class Pesanan(){
+//     String tanggalPesanan;
     
-    public void tampilkanPesanan(){
+//     public void tampilkanPesanan(){
 
+//     }
+// }
+abstract class Pesanan {
+    public void prosesPesanan() {
+        inputData();
+        if (cekKetersediaan()) {
+            hitungTotal();
+            buatID();
+            simpanPesanan();
+        } else {
+            System.out.println("Menu tidak tersedia, silakan input ulang");
+            inputData();
+        }
+    }
+
+    abstract void inputData();
+    abstract boolean cekKetersediaan();
+    abstract void hitungTotal();
+    abstract void buatID();
+    abstract void simpanPesanan();
+}
+
+class PesananMandiri extends Pesanan {
+
+    void inputData() {
+        System.out.println("User input sendiri di sistem");
+    }
+
+    boolean cekKetersediaan() {
+        System.out.println("Cek menu tersedia");
+        return true;
+    }
+
+    void hitungTotal() {
+        System.out.println("Hitung total + pajak");
+    }
+
+    void buatID() {
+        System.out.println("Generate ID pesanan");
+    }
+
+    void simpanPesanan() {
+        System.out.println("Pesanan disimpan");
     }
 }
+
+class PesananKasir extends Pesanan {
+    void inputData() {
+        System.out.println("Kasir input pesanan");
+    }
+
+    boolean cekKetersediaan() {
+        System.out.println("Kasir cek menu");
+        return true;
+    }
+
+    void hitungTotal() {
+        System.out.println("Kasir hitung total");
+    }
+
+    void buatID() {
+        System.out.println("Generate ID");
+    }
+
+    void simpanPesanan() {
+        System.out.println("Simpan pesanan");
+    }
+}
+
+class PesananKaryawan extends Pesanan {
+
+    void inputData() {
+        System.out.println("Karyawan bantu input via tablet");
+    }
+
+    boolean cekKetersediaan() {
+        System.out.println("Cek menu di sistem");
+        return true;
+    }
+
+    void hitungTotal() {
+        System.out.println("Hitung total");
+    }
+
+    void buatID() {
+        System.out.println("Generate ID");
+    }
+
+    void simpanPesanan() {
+        System.out.println("Simpan pesanan");
+    }
+}
+
 class Pelanggan{
     enum Status{
         Member,
