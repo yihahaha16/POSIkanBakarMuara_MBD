@@ -4,6 +4,7 @@ interface MetodePembayaran {
     void bayar(int total);
 }
 
+
 class Menu{
     String menuId;
     String menuNama;
@@ -26,14 +27,34 @@ class Menu{
     }
 }
 
+class Pesanan(){
+    String tanggalPesanan;
+    
+    public void tampilkanPesanan(){
+
+    }
+}
 class Pelanggan{
+    enum Status{
+        Member,
+        Reguler
+    }
     String pelangganId;
     String pelangganNoHP;
     String pelangganNama;
+    String pelangganStatus;
 
-    public Pelanggan()
+    // utk input data pelanggan dan bedakan status
+    public Pelanggan(String pelangganId, String pelangganNoHP, String pelangganNama, String pelangganStatus){ 
+        this.pelangganId = pelangganId;
+        this.pelangganNoHP = pelangganNoHP;
+        this.pelangganNama = pelangganNama;
+        this.pelangganStatus = pelangganStatus;   
+    }
 
-    public void inputPelanggan()
+    public void inputPelanggan(){
+
+    }
 }
 
 class PembayaranCash implements MetodePembayaran {
