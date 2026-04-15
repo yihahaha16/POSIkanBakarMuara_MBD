@@ -1,5 +1,9 @@
 package Tugas1;
 
+interface MetodePembayaran {
+    void bayar(int total);
+}
+
 class Menu{
     String menuId;
     String menuNama;
@@ -32,6 +36,27 @@ class Pelanggan{
     public void inputPelanggan()
 }
 
+class PembayaranCash implements MetodePembayaran {
+    public void bayar(int total) {
+        System.out.println("Bayar cash: " + total);
+    }
+}
+
+class PembayaranQRIS implements MetodePembayaran {
+    public void bayar(int total) {
+        System.out.println("Scan QRIS untuk bayar: " + total);
+    }
+}
+
+class PembayaranDebit implements MetodePembayaran {
+    public void bayar(int total) {
+        System.out.println("Gesek / tap kartu debit: " + total);
+    }
+}
+
 public class Tugas1 {
-    
+    public static void main(String[] args) {
+        PembayaranDebit pelanggan1 = new PembayaranDebit();
+        pelanggan1.bayar(80000);
+    }
 }
