@@ -243,8 +243,8 @@ class PembayaranQRIS extends Pembayaran implements CetakStruk{
 
 public class Tugas1 {
     public static void main(String[] args) {
-        // PembayaranDebit pelanggan1 = new PembayaranDebit();
-        // pelanggan1.bayar(80000);
+        System.out.println("==== SELAMAT DATANG ====");
+        System.out.println("=== RESTORAN IKAN BAKAR MUARA ===");
         
     }
 }
