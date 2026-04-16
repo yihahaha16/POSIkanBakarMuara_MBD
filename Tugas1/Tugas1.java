@@ -9,21 +9,36 @@ class Menu{
     String menuId;
     String menuNama;
     String menuStatus;
-    String menuKategori;
-    int menuHarga;
+    // bool isAvailable;
 
     //Constructor untuk menginisialisasi data Menu
-    public Menu(String menuId, String menuNama, String menuStatus, String menuKategori, int menuHarga){
+    public Menu(String menuId, String menuNama, String menuStatus){
         this.menuId = menuId;
         this.menuNama = menuNama;
         this.menuStatus = menuStatus;
-        this.menuKategori = menuKategori;
-        this.menuHarga = menuHarga;
     }
 
     //Method untuk menampilkan Menu
     public void tampilMenu(){
-        System.out.println(menuId + " - " + menuNama + " - " + menuKategori + " - Rp " + menuHarga + " - " + menuStatus);
+        System.out.println(menuId + " - " + menuNama + " - " + menuStatus);
+    }
+}
+
+class MenuReguler extends Menu{
+    private int hargaMenuReguler;
+
+    public MenuReguler(String menuId, String menuNama, String menuStatus, int hargaMenuReguler){
+        super(menuId, menuNama, menuStatus);
+        this.hargaMenuReguler = hargaMenuReguler;
+    }
+}
+
+class MenuPoin extends Menu{
+    private int hargaMenuPoin;
+
+    public MenuPoin(String menuId, String menuNama, String menuStatus, int hargaMenuPoin){
+        super(menuId, menuNama, menuStatus);
+        this.hargaMenuPoin = hargaMenuPoin;
     }
 }
 
@@ -125,48 +140,53 @@ class PesananKaryawan extends Pesanan {
     }
 }
 
+// SUPER CLASS PELANGGAN --- INHERITANCE
 class Pelanggan{
     enum Status{
         Member,
         Reguler
     }
-    String pelangganId;
-    String pelangganNoHP;
+    String pelangganId; //BISE KE PAKEIN AUTO INCREMENT?? 
     String pelangganNama;
     Status status;
 
-    // utk input data pelanggan dan bedakan status
-    public Pelanggan(String pelangganId, String pelangganNoHP, String pelangganNama, Status status){ 
+    public Pelanggan(String pelangganId, String pelangganNama, Status status){ 
         this.pelangganId = pelangganId;
-        this.pelangganNoHP = pelangganNoHP;
         this.pelangganNama = pelangganNama;
         this.status = status;   
     }
 
-    public void pesanDineIn(){
-        
-    }
-
-    public void pesanTakeAway(){
-
+    public void menampilkanPelanggan(){
+        System.out.println("Nama\t: " + pelangganNama);
+        System.out.println("Status\t: " + status);
     }
 }
 
+// SUBCLASS MEMBER (DARI SUPER CLASS PELANGGAN) 
 class Member extends Pelanggan{
     int poin = 0;
-    String estimasiKedatangan;
+    String pelangganNoHp;
+    // public void tampilkanPoin(){
+    //     System.out.println("Poin Anda: " + poin);
+    // }
 
-    public void tambahPoin(){
-        poin += ...; // (total bayar/10) kah?
+    public Member(String pelangganId, String pelangganNama, Status status, String pelangganNoHp){
+        super(pelangganId, pelangganNama, Status.Member);
+        this.pelangganNoHp = pelangganNoHp;
     }
-    
-    public void pesanOnline(){
-        
+
+    public void menampilkanPelanggan(){
+        super.menampilkanPelanggan();
+        System.out.println("No Hp\t: " + pelangganNoHp);
+        System.out.println("Poin\t:" + poin);
     }
 }
 
+// SUBCLASS REGULER (DARI SUPER CLASS PELANGGAN)
 class Reguler extends Pelanggan{
-    //bingung ape isinye
+    public Reguler(String pelangganId, String pelangganNama, Status status){
+        super(pelangganId, pelangganNama, Status.Reguler);
+    }
 }
 //ABSTRACTION: Yang disembunyikan adalah detail proses pembayaran seperti validasi saldo dan perhitungan kembalian. User hanya menggunakan method bayar() tanpa mengetahui implementasinya
 abstract class Pembayaran{
