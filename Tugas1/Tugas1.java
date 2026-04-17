@@ -71,7 +71,7 @@ class MenuPoin extends Menu{
     }
 }
 
-// POLYMORPHISM: memungkinkan method yang sama digunakan untuk perilaku yang berbeda (pada class DineIn dan TakeAway)
+//POLYMORPHISM: memungkinkan method yang sama digunakan untuk perilaku yang berbeda (pada class DineIn dan TakeAway)
 class Pesanan {
     private String pesananId;
     private int pesananTotal;
@@ -118,7 +118,7 @@ class DineIn extends Pesanan{
         this.noMeja = noMeja;
     }
 
-    @Override
+    @Override // override untuk output lebih lengkap
     public void proses() {
         System.out.println("Pesanan dine-in di meja " + noMeja + " sedang diproses!");
     }
@@ -129,7 +129,7 @@ class TakeAway extends Pesanan{
         super(pesananId, pesananTotal);
     }
 
-    @Override
+    @Override // override untuk output lebih lengkap
     public void proses() {
         System.out.println("Pesanan take away sedang diproses!");
     }
@@ -192,7 +192,7 @@ class Member extends Pelanggan{
         this.poin = totalPoin;
     }
 
-    @Override // override untuk output lebih lengkap
+    @Override //override untuk output lebih lengkap
     public void menampilkanPelanggan(){
         super.menampilkanPelanggan();
         System.out.println("No. HP\t\t: " + pelangganNoHp);
@@ -328,10 +328,9 @@ public class Tugas1 {
 
         pb1.bayar();
 
-
         // // Pelanggan member (2) melihat menu poin, menambahkan pesanan take away, dan melakukan pembayaran qris
         // Pelanggan pl2 = new Member("P002", "Budi", Pelanggan.Status.Member, "089667788995");
-        // Menu m2 = new MenuPoin("M010", "Tumis Kangkung Poin", "Tersedia", 15000);
+        // Menu m2 = new MenuPoin("M010", "Tumis Kangkung Poin", Menu.Status.Tersedia, 15000);
         // Pesanan ps2 = new TakeAway("PS002", 15000);
         // Pembayaran pb2 = new PembayaranQRIS(15000, 60000);
         
