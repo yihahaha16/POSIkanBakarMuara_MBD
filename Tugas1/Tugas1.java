@@ -5,55 +5,96 @@ interface CetakStruk {
     public void cetakStruk();
 }
 
+//INHERITANCE: digunakan untuk mewarisi atribut dan perilaku yang dimiliki oleh superclass ke subclass
 class Menu{
-    String menuId;
-    String menuNama;
-    String menuStatus;
-    // bool isAvailable;
+    enum Status{
+        Tersedia,
+        Habis
+    }
+    private String menuId;
+    private String menuNama;
+    private Status menuStatus;          
 
     //Constructor untuk menginisialisasi data Menu
-    public Menu(String menuId, String menuNama, String menuStatus){
+    public Menu(String menuId, String menuNama, Status menuStatus){
         this.menuId = menuId;
         this.menuNama = menuNama;
         this.menuStatus = menuStatus;
+    }
+
+    public String getMenuId(){
+        return menuId;
+    }
+
+    public String getmenuNama(){
+        return menuNama;
+    }
+
+    public Status getMenuStatus(){
+        return menuStatus;
+    }
+
+    public void setMenuStatus(Status menuStatus){
+        this.menuStatus = menuStatus; 
     }
 
     //Method untuk menampilkan Menu
     public void tampilMenu(){
         System.out.println(menuId + " - " + menuNama + " - " + menuStatus);
     }
+
 }
 
 class MenuReguler extends Menu{
     private int hargaMenuReguler;
 
-    public MenuReguler(String menuId, String menuNama, String menuStatus, int hargaMenuReguler){
+    public MenuReguler(String menuId, String menuNama, Status menuStatus, int hargaMenuReguler){
         super(menuId, menuNama, menuStatus);
         this.hargaMenuReguler = hargaMenuReguler;
+    }
+
+    public int getHargaMenuReguler(){
+        return hargaMenuReguler;
     }
 }
 
 class MenuPoin extends Menu{
     private int hargaMenuPoin;
 
-    public MenuPoin(String menuId, String menuNama, String menuStatus, int hargaMenuPoin){
+    public MenuPoin(String menuId, String menuNama, Status menuStatus, int hargaMenuPoin){
         super(menuId, menuNama, menuStatus);
         this.hargaMenuPoin = hargaMenuPoin;
+    }
+
+    public int getHargaMenuPoin(){
+        return hargaMenuPoin;
     }
 }
 
 // POLYMORPHISM: memungkinkan method yang sama digunakan untuk perilaku yang berbeda (pada class DineIn dan TakeAway)
 class Pesanan {
-    String pesananId;
-    int pesananTotal;
-    int pesananPajak;
+    private String pesananId;
+    private int pesananTotal;
+    private int pesananPajak;
 
     public Pesanan(String pesananId, int pesananTotal){ 
         this.pesananId = pesananId;
         this.pesananTotal = pesananTotal;   
     }
 
-    void pesan() {
+    public String getPesananId(){
+        return pesananId;
+    }
+
+    public int getPesananTotal(){
+        return pesananTotal;
+    }
+
+    public int getPesananPajak(){
+        return pesananPajak;
+    }
+
+    public void pesan() {
         pesananPajak = (int)(pesananTotal * 0.1);
         int totalBayar = pesananTotal + pesananPajak;
 
@@ -64,7 +105,7 @@ class Pesanan {
         System.out.println();
     }
 
-    void proses() {
+    public void proses() {
         System.out.println("Pesanan sedang diproses");
     }
 }
@@ -78,7 +119,7 @@ class DineIn extends Pesanan{
     }
 
     @Override
-    void proses() {
+    public void proses() {
         System.out.println("Pesanan dine-in di meja " + noMeja + " sedang diproses!");
     }
 }
@@ -89,135 +130,68 @@ class TakeAway extends Pesanan{
     }
 
     @Override
-    void proses() {
+    public void proses() {
         System.out.println("Pesanan take away sedang diproses!");
     }
 }
-// abstract class Pesanan {
-//     public void prosesPesanan() {
-//         inputData();
 
-//         if (cekKetersediaan()) {
-//             hitungTotal();
-//             buatID();
-//             simpanPesanan();
-//         } else {
-//             System.out.println("Menu tidak tersedia, silakan input ulang");
-//             inputData();
-//         }
-//     }
-
-//     abstract void inputData();
-//     abstract boolean cekKetersediaan();
-//     abstract void hitungTotal();
-//     abstract void buatID();
-//     abstract void simpanPesanan();
-// }
-
-// class PesananMandiri extends Pesanan {
-
-//     void inputData() {
-//         System.out.println("User input sendiri di sistem");
-//     }
-
-//     boolean cekKetersediaan() {
-//         System.out.println("Cek menu tersedia");
-//         return true;
-//     }
-
-//     void hitungTotal() {
-//         System.out.println("Hitung total + pajak");
-//     }
-
-//     void buatID() {
-//         System.out.println("Generate ID pesanan");
-//     }
-
-//     void simpanPesanan() {
-//         System.out.println("Pesanan disimpan");
-//     }
-// }
-
-// class PesananKasir extends Pesanan {
-//     void inputData() {
-//         System.out.println("Kasir input pesanan");
-//     }
-
-//     boolean cekKetersediaan() {
-//         System.out.println("Kasir cek menu");
-//         return true;
-//     }
-
-//     void hitungTotal() {
-//         System.out.println("Kasir hitung total");
-//     }
-
-//     void buatID() {
-//         System.out.println("Generate ID");
-//     }
-
-//     void simpanPesanan() {
-//         System.out.println("Simpan pesanan");
-//     }
-// }
-
-// class PesananKaryawan extends Pesanan {
-
-//     void inputData() {
-//         System.out.println("Karyawan bantu input via tablet");
-//     }
-
-//     boolean cekKetersediaan() {
-//         System.out.println("Cek menu di sistem");
-//         return true;
-//     }
-
-//     void hitungTotal() {
-//         System.out.println("Hitung total");
-//     }
-
-//     void buatID() {
-//         System.out.println("Generate ID");
-//     }
-
-//     void simpanPesanan() {
-//         System.out.println("Simpan pesanan");
-//     }
-// }
-
-// SUPER CLASS PELANGGAN --- INHERITANCE
+// SUPERCLASS PELANGGAN --- INHERITANCE
 class Pelanggan{
     enum Status{
         Member,
         Reguler
     }
-    String pelangganId; //BISE KE PAKEIN AUTO INCREMENT?? 
-    String pelangganNama;
-    Status status;
+    private String pelangganId; 
+    private String pelangganNama;
+    private Status pelangganStatus;
 
-    public Pelanggan(String pelangganId, String pelangganNama, Status status){ 
+    public Pelanggan(String pelangganId, String pelangganNama, Status pelangganStatus){ 
         this.pelangganId = pelangganId;
         this.pelangganNama = pelangganNama;
-        this.status = status;   
+        this.pelangganStatus = pelangganStatus;   
+    }
+
+    public String getPelangganId(){
+        return pelangganId;
+    }
+
+    public String getPelangganNama(){
+        return pelangganNama;
+    }
+
+    public Status getPelangganStatus(){
+        return pelangganStatus;
     }
 
     public void menampilkanPelanggan(){
         System.out.println("Nama\t\t: " + pelangganNama);
-        System.out.println("Status\t\t: " + status);
+        System.out.println("Status\t\t: " + pelangganStatus);
     }
 }
 
 // SUBCLASS MEMBER (DARI SUPER CLASS PELANGGAN) 
 class Member extends Pelanggan{
-    int poin = 0;
-    String pelangganNoHp;
-    // public void tampilkanPoin(){
-    //     System.out.println("Poin Anda: " + poin);
-    // }
+    private int poin = 0;
+    private String pelangganNoHp;
 
     public Member(String pelangganId, String pelangganNama, Status status, String pelangganNoHp){
         super(pelangganId, pelangganNama, Status.Member);
         this.pelangganNoHp = pelangganNoHp;
+    }
+
+    public int getPoin(){
+        return poin;
+    }
+
+    public String getPelangganNoHP(){
+        return pelangganNoHp;
+    }
+
+    public void hitungPoin(int totalBayar){
+        int konversiPoin = totalBayar;
+        int bonusPoin = (totalBayar/50000)*1500;
+        int totalPoin = konversiPoin + bonusPoin;
+        this.poin = totalPoin;
     }
 
     @Override // override untuk output lebih lengkap
@@ -237,15 +211,26 @@ class Reguler extends Pelanggan{
 
 //ABSTRACTION: Yang disembunyikan adalah detail proses pembayaran seperti validasi saldo dan perhitungan kembalian. User hanya menggunakan method bayar() tanpa mengetahui implementasinya
 abstract class Pembayaran{
-    int total;
-    int saldo;
+    protected int total;
+    protected int saldo;
+
+    public int getTotal(){
+        return total;
+    }
+
+    public int getSaldo(){
+        return saldo;
+    }
+
     public Pembayaran(int total) { //QRIS
         this.total = total;
     }
+
     public Pembayaran(int total, int saldo) { //Cash
         this.total = total;
         this.saldo = saldo;
     }
+
     public abstract void bayar();
     public boolean cekPembayaran(int total, int saldo){
         if(saldo<total){
@@ -329,7 +314,7 @@ public class Tugas1 {
 
         // Pelanggan reguler (1) melihat menu reguler, menambahkan pesanan dine in, dan melakukan pembayaran cash
         Pelanggan pl1 = new Reguler("PL001", "Anita", Pelanggan.Status.Reguler);
-        Menu m1 = new MenuReguler("M001", "Nila Bakar Muara", "Tersedia", 23000);
+        Menu m1 = new MenuReguler("M001", "Nila Bakar Muara", Menu.Status.Tersedia, 23000);
         Pesanan ps1 = new DineIn("PS001", 52000, "A1");
         Pembayaran pb1 = new PembayaranCash(52000, 250000);
         
