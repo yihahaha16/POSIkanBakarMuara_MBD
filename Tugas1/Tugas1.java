@@ -188,9 +188,7 @@ class Member extends Pelanggan{
     }
 
     public void hitungPoin(int totalBayar){
-        int konversiPoin = totalBayar;
-        int bonusPoin = (totalBayar/50000)*1500;
-        int totalPoin = konversiPoin + bonusPoin;
+        int totalPoin = (totalBayar*3)/100;
         this.poin = totalPoin;
     }
 
