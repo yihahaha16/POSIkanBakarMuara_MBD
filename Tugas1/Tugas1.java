@@ -42,103 +42,148 @@ class MenuPoin extends Menu{
     }
 }
 
-// class Pesanan(){
-//     String tanggalPesanan;
-    
-//     public void tampilkanPesanan(){
+// POLYMORPHISM: memungkinkan method yang sama digunakan untuk perilaku yang berbeda (pada class DineIn dan TakeAway)
+class Pesanan {
+    String pesananId;
+    int pesananTotal;
+    int pesananPajak;
 
+    public Pesanan(String pesananId, int pesananTotal){ 
+        this.pesananId = pesananId;
+        this.pesananTotal = pesananTotal;   
+    }
+
+    void pesan() {
+        pesananPajak = (int)(pesananTotal * 0.1);
+        int totalBayar = pesananTotal + pesananPajak;
+
+        System.out.println("Pesanan telah dibuat");
+        System.out.println("Total\t\t: Rp" + pesananTotal);
+        System.out.println("Pajak (10%)\t: Rp" + pesananPajak);
+        System.out.println("Total bayar\t: Rp" + totalBayar);
+        System.out.println();
+    }
+
+    void proses() {
+        System.out.println("Pesanan sedang diproses");
+    }
+}
+
+class DineIn extends Pesanan{
+    String noMeja;
+
+    DineIn(String pesananId, int pesananTotal, String noMeja) {
+        super(pesananId, pesananTotal);
+        this.noMeja = noMeja;
+    }
+
+    @Override
+    void proses() {
+        System.out.println("Pesanan dine-in di meja " + noMeja + " sedang diproses!");
+    }
+}
+
+class TakeAway extends Pesanan{
+    TakeAway(String pesananId, int pesananTotal) {
+        super(pesananId, pesananTotal);
+    }
+
+    @Override
+    void proses() {
+        System.out.println("Pesanan take away sedang diproses!");
+    }
+}
+// abstract class Pesanan {
+//     public void prosesPesanan() {
+//         inputData();
+
+//         if (cekKetersediaan()) {
+//             hitungTotal();
+//             buatID();
+//             simpanPesanan();
+//         } else {
+//             System.out.println("Menu tidak tersedia, silakan input ulang");
+//             inputData();
+//         }
+//     }
+
+//     abstract void inputData();
+//     abstract boolean cekKetersediaan();
+//     abstract void hitungTotal();
+//     abstract void buatID();
+//     abstract void simpanPesanan();
+// }
+
+// class PesananMandiri extends Pesanan {
+
+//     void inputData() {
+//         System.out.println("User input sendiri di sistem");
+//     }
+
+//     boolean cekKetersediaan() {
+//         System.out.println("Cek menu tersedia");
+//         return true;
+//     }
+
+//     void hitungTotal() {
+//         System.out.println("Hitung total + pajak");
+//     }
+
+//     void buatID() {
+//         System.out.println("Generate ID pesanan");
+//     }
+
+//     void simpanPesanan() {
+//         System.out.println("Pesanan disimpan");
 //     }
 // }
-abstract class Pesanan {
-    public void prosesPesanan() {
-        inputData();
-        if (cekKetersediaan()) {
-            hitungTotal();
-            buatID();
-            simpanPesanan();
-        } else {
-            System.out.println("Menu tidak tersedia, silakan input ulang");
-            inputData();
-        }
-    }
 
-    abstract void inputData();
-    abstract boolean cekKetersediaan();
-    abstract void hitungTotal();
-    abstract void buatID();
-    abstract void simpanPesanan();
-}
+// class PesananKasir extends Pesanan {
+//     void inputData() {
+//         System.out.println("Kasir input pesanan");
+//     }
 
-class PesananMandiri extends Pesanan {
+//     boolean cekKetersediaan() {
+//         System.out.println("Kasir cek menu");
+//         return true;
+//     }
 
-    void inputData() {
-        System.out.println("User input sendiri di sistem");
-    }
+//     void hitungTotal() {
+//         System.out.println("Kasir hitung total");
+//     }
 
-    boolean cekKetersediaan() {
-        System.out.println("Cek menu tersedia");
-        return true;
-    }
+//     void buatID() {
+//         System.out.println("Generate ID");
+//     }
 
-    void hitungTotal() {
-        System.out.println("Hitung total + pajak");
-    }
+//     void simpanPesanan() {
+//         System.out.println("Simpan pesanan");
+//     }
+// }
 
-    void buatID() {
-        System.out.println("Generate ID pesanan");
-    }
+// class PesananKaryawan extends Pesanan {
 
-    void simpanPesanan() {
-        System.out.println("Pesanan disimpan");
-    }
-}
+//     void inputData() {
+//         System.out.println("Karyawan bantu input via tablet");
+//     }
 
-class PesananKasir extends Pesanan {
-    void inputData() {
-        System.out.println("Kasir input pesanan");
-    }
+//     boolean cekKetersediaan() {
+//         System.out.println("Cek menu di sistem");
+//         return true;
+//     }
 
-    boolean cekKetersediaan() {
-        System.out.println("Kasir cek menu");
-        return true;
-    }
+//     void hitungTotal() {
+//         System.out.println("Hitung total");
+//     }
 
-    void hitungTotal() {
-        System.out.println("Kasir hitung total");
-    }
+//     void buatID() {
+//         System.out.println("Generate ID");
+//     }
 
-    void buatID() {
-        System.out.println("Generate ID");
-    }
-
-    void simpanPesanan() {
-        System.out.println("Simpan pesanan");
-    }
-}
-
-class PesananKaryawan extends Pesanan {
-
-    void inputData() {
-        System.out.println("Karyawan bantu input via tablet");
-    }
-
-    boolean cekKetersediaan() {
-        System.out.println("Cek menu di sistem");
-        return true;
-    }
-
-    void hitungTotal() {
-        System.out.println("Hitung total");
-    }
-
-    void buatID() {
-        System.out.println("Generate ID");
-    }
-
-    void simpanPesanan() {
-        System.out.println("Simpan pesanan");
-    }
-}
+//     void simpanPesanan() {
+//         System.out.println("Simpan pesanan");
+//     }
+// }
 
 // SUPER CLASS PELANGGAN --- INHERITANCE
 class Pelanggan{
@@ -157,8 +202,8 @@ class Pelanggan{
     }
 
     public void menampilkanPelanggan(){
-        System.out.println("Nama\t: " + pelangganNama);
-        System.out.println("Status\t: " + status);
+        System.out.println("Nama\t\t: " + pelangganNama);
+        System.out.println("Status\t\t: " + status);
     }
 }
 
@@ -175,10 +220,11 @@ class Member extends Pelanggan{
         this.pelangganNoHp = pelangganNoHp;
     }
 
+    @Override // override untuk output lebih lengkap
     public void menampilkanPelanggan(){
         super.menampilkanPelanggan();
-        System.out.println("No Hp\t: " + pelangganNoHp);
-        System.out.println("Poin\t:" + poin);
+        System.out.println("No. HP\t\t: " + pelangganNoHp);
+        System.out.println("Poin\t\t: " + poin);
     }
 }
 
@@ -188,6 +234,7 @@ class Reguler extends Pelanggan{
         super(pelangganId, pelangganNama, Status.Reguler);
     }
 }
+
 //ABSTRACTION: Yang disembunyikan adalah detail proses pembayaran seperti validasi saldo dan perhitungan kembalian. User hanya menggunakan method bayar() tanpa mengetahui implementasinya
 abstract class Pembayaran{
     int total;
@@ -219,22 +266,30 @@ class PembayaranCash extends Pembayaran implements CetakStruk{
     public int hitungKembalian(){
         return saldo - total;
     }
+
+    @Override // override untuk output lebih lengkap
     public void bayar(){
-        System.out.println("Silahkan bayar di kasir dengan nominal Rp " + total);
-        System.out.println("Uang yang diterima Rp " + saldo);
-         if(cekPembayaran(total, saldo)){
-            System.out.println("Pembayaran berhasil");
-            System.out.println("Kembalian anda Rp " + hitungKembalian());
+        System.out.println("Silahkan bayar di kasir dengan nominal Rp" + total);
+        System.out.println("Uang yang diterima Rp" + saldo);
+        System.out.println();
+
+        if(cekPembayaran(total, saldo)){
+            System.out.println("===== Pembayaran Berhasil =====");
+            System.out.println("Kembalian anda Rp" + hitungKembalian());
+            System.out.println();
             cetakStruk();
         } else {
             System.out.println("Uang anda kurang Rp " + (total - saldo));
         }
     }
+
+    @Override // override untuk output lebih lengkap
     public void cetakStruk(){
-        System.out.println("STRUK PEMBAYARAN");
-        System.out.println("Total: Rp " + total);
-        System.out.println("Bayar: Rp " + saldo);
-        System.out.println("Kembalian: Rp " + hitungKembalian());
+        System.out.println("======= STRUK PEMBAYARAN =======");
+        System.out.println("================================");
+        System.out.println("Total\t\t: Rp" + total);
+        System.out.println("Bayar\t\t: Rp" + saldo);
+        System.out.println("Kembalian\t: Rp" + hitungKembalian());
         System.out.println("Terima kasih!");
     }
 }
@@ -244,27 +299,69 @@ class PembayaranQRIS extends Pembayaran implements CetakStruk{
         super(total,saldo);
     }
 
+    @Override // override untuk output lebih lengkap
     public void bayar(){
-        System.out.println("Silahkan scan QRIS");
-        System.out.println("Total pesanan anda Rp " + total);
+        System.out.println("====== Silakan scan QRIS ======");
+        System.out.println("Total pesanan anda Rp" + total);
          if(cekPembayaran(total, saldo)){
-            System.out.println("Pembayaran berhasil");
+            System.out.println("===== Pembayaran berhasil =====");
+            System.out.println();
             cetakStruk();
         } else {
-            System.out.println("Saldo anda kurang Rp " + (total - saldo));
+            System.out.println("Saldo anda kurang Rp" + (total - saldo));
         }
     }
+
+    @Override // override untuk output lebih lengkap
     public void cetakStruk(){
-        System.out.println("STRUK PEMBAYARAN QRIS");
-        System.out.println("Total: Rp " + total);
+        System.out.println("==== STRUK PEMBAYARAN QRIS ====");
+        System.out.println("===============================");
+        System.out.println("Total\t\t: Rp" + total);
         System.out.println("Terima kasih!");
     }
 }
 
 public class Tugas1 {
     public static void main(String[] args) {
-        System.out.println("==== SELAMAT DATANG ====");
+        System.out.println("========= SELAMAT DATANG ========");
         System.out.println("=== RESTORAN IKAN BAKAR MUARA ===");
+        System.out.println();
+
+        // Pelanggan reguler (1) melihat menu reguler, menambahkan pesanan dine in, dan melakukan pembayaran cash
+        Pelanggan pl1 = new Reguler("PL001", "Anita", Pelanggan.Status.Reguler);
+        Menu m1 = new MenuReguler("M001", "Nila Bakar Muara", "Tersedia", 23000);
+        Pesanan ps1 = new DineIn("PS001", 52000, "A1");
+        Pembayaran pb1 = new PembayaranCash(52000, 250000);
         
+        pl1.menampilkanPelanggan();
+        System.out.println();
+
+        m1.tampilMenu();
+        System.out.println();
+
+        ps1.pesan();
+        ps1.proses();
+        System.out.println();
+
+        pb1.bayar();
+
+
+        // // Pelanggan member (2) melihat menu poin, menambahkan pesanan take away, dan melakukan pembayaran qris
+        // Pelanggan pl2 = new Member("P002", "Budi", Pelanggan.Status.Member, "089667788995");
+        // Menu m2 = new MenuPoin("M010", "Tumis Kangkung Poin", "Tersedia", 15000);
+        // Pesanan ps2 = new TakeAway("PS002", 15000);
+        // Pembayaran pb2 = new PembayaranQRIS(15000, 60000);
+        
+        // pl2.menampilkanPelanggan();
+        // System.out.println();
+
+        // m2.tampilMenu();
+        // System.out.println();
+
+        // ps2.pesan();
+        // ps2.proses();
+        // System.out.println();
+
+        // pb2.bayar();
     }
 }
