@@ -3,7 +3,6 @@ package Tugas13;
 interface Detail{
     public void cetakDetailPesanan();
     public void cetakMenu();
-    public void cetakTotal();
 }
 class PembayaranSplitBill{
     //static: digunakan untuk pajak karena pajak bersifat tetap (static)
@@ -23,17 +22,19 @@ class PembayaranSplitBill{
 
     void hitungSplitBill() {
         cetakMenu();
-        cetakDetailPesanan();
-        cetakTotal();
+        System.out.println("==  TOTAL PESANAN  ==");
         for (int i = 0; i < orang.length; i++) {
+            System.out.println("Nama:\t"+orang[i]);
             int total = 0;
             for (int j = 0; j < menuPerOrang[i].length; j++) {
                 int harga = Integer.parseInt(menuHarga[menuPerOrang[i][j]][1]);//https://www.geeksforgeeks.org/java/how-to-convert-string-to-int-in-java/
                 total += harga;
+                System.out.println(menuHarga[menuPerOrang[i][j]][0] + " " + menuHarga[menuPerOrang[i][j]][1]);
             }
             total += (total * pajak);
 
-            System.out.println(orang[i] + " bayar: Rp " + total);
+            System.out.println("Total: Rp " + total);
+            System.out.println("-----------------");
         }
     }
 
@@ -43,21 +44,7 @@ class PembayaranSplitBill{
         for (int i=0; i < menuHarga.length; i++){
             System.out.println(menuHarga[i][0]+ " " + menuHarga[i][1]);
         }
-    }
-
-    public void cetakDetailPesanan(){
-        System.out.println("\n== DETAIL HARGA PESANAN ==");
-        for (int i = 0; i < orang.length; i++) {
-            System.out.print(orang[i] + " : " );
-            for (int j = 0; j < menuPerOrang[i].length; j++) {
-               System.out.print(menuHarga[menuPerOrang[i][j]][1] + " || ");
-            }
-            System.out.println("");
-        }
-    } 
-
-    public void cetakTotal(){
-        System.out.println("\n== TOTAL BAYAR ==");
+        System.err.println("");
     }
 }
 
