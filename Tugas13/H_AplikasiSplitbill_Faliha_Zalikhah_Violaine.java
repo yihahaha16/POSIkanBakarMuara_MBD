@@ -73,7 +73,7 @@ public class H_AplikasiSplitbill_Faliha_Zalikhah_Violaine {
                 {"Krabby Patty", "20000"}
             },
             new int[][]{
-                {0, 1},
+                {0, 1, 2},
                 {3, 4},
                 {0, 2}
             }
