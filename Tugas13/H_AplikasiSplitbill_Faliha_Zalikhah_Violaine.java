@@ -24,7 +24,7 @@ class PembayaranSplitBill{
         cetakMenu();
         System.out.println("==  TOTAL PESANAN  ==");
         for (int i = 0; i < orang.length; i++) {
-            System.out.println("Nama:\t"+orang[i]);
+            System.out.println("Nama: "+orang[i]);
             int total = 0;
             for (int j = 0; j < menuPerOrang[i].length; j++) {
                 int harga = Integer.parseInt(menuHarga[menuPerOrang[i][j]][1]);//https://www.geeksforgeeks.org/java/how-to-convert-string-to-int-in-java/
