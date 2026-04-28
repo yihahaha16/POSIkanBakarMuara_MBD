@@ -1,5 +1,10 @@
 package Tugas13;
 
+interface Detail{
+    public void cetakDetailPesanan();
+    public void cetakMenu();
+    public void cetakTotal();
+}
 class PembayaranSplitBill{
     //static: digunakan untuk pajak karena pajak bersifat tetap (static)
     static float pajak = 0.1f;
@@ -17,6 +22,9 @@ class PembayaranSplitBill{
     }
 
     void hitungSplitBill() {
+        cetakMenu();
+        cetakDetailPesanan();
+        cetakTotal();
         for (int i = 0; i < orang.length; i++) {
             int total = 0;
             for (int j = 0; j < menuPerOrang[i].length; j++) {
@@ -27,6 +35,29 @@ class PembayaranSplitBill{
 
             System.out.println(orang[i] + " bayar: Rp " + total);
         }
+    }
+
+    public void cetakMenu(){
+        System.out.println("==== APLIKASI SPLIT BILL ====");
+        System.out.println("\n==  MENU  ==");
+        for (int i=0; i < menuHarga.length; i++){
+            System.out.println(menuHarga[i][0]+ " " + menuHarga[i][1]);
+        }
+    }
+
+    public void cetakDetailPesanan(){
+        System.out.println("\n== DETAIL HARGA PESANAN ==");
+        for (int i = 0; i < orang.length; i++) {
+            System.out.print(orang[i] + " : " );
+            for (int j = 0; j < menuPerOrang[i].length; j++) {
+               System.out.print(menuHarga[menuPerOrang[i][j]][1] + " || ");
+            }
+            System.out.println("");
+        }
+    } 
+
+    public void cetakTotal(){
+        System.out.println("\n== TOTAL BAYAR ==");
     }
 }
 
