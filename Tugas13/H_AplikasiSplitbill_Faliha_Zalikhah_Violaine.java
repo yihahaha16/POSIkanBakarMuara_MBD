@@ -66,6 +66,17 @@ public class H_AplikasiSplitbill_Faliha_Zalikhah_Violaine {
             }
         );
 
+        System.out.println("==== STRUK ====");
+        System.out.println("Nasi Goreng(15.000)        2x\t30.000");
+        System.out.println("Ayam(20.000)               1x\t20.000");
+        System.out.println("Es Teh(10.000)             2x\t20.000");
+        System.out.println("Kelp Shake(10.000)         1x\t20.000");
+        System.out.println("Krabby Patty(20.000)       1x\t20.000");
+        System.out.println("----------------------------------------");
+        System.out.println("Total      \t100.000");
+        System.out.println("Pajak 10%  \t10.000");
+        System.out.println("Total Bayar\t110.000");
+
         pb.hitungSplitBill();
     }
 }
