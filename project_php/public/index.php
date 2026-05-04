@@ -4,7 +4,7 @@
         <title>Beranda</title>
     </head>
     <body>
-        <form action="/process/insert.php" method="post">
+        <form action="../process/insert.php" method="post">
             Nomor Telepon: <input type="text" name=pelanggan_noHp><br>
             Tanggal pesan: <input type="date" name=pesanan_tanggal><br>
             Nomor Meja: <input type="text" name=pesanan_noMeja><br>
@@ -40,7 +40,9 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 </table>
-<button type="submit">Pesan</button>
+<a href = "tambah.php">
+    <button type="submit">Pesan</button>
+</a>
  </form>
     </body>
 </html>
