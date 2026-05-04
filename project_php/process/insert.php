@@ -1,6 +1,10 @@
 <?php
-require_once 'D:\Kul\Semester_4\PBO_Praktikum\PBO_POSIkanBakarMuara\project_php\config\database.php';
+require_once "..\config\database.php";
 try{
+    $pelanggan_id = $conn->prepare("insert ignore into pelanggan (pelanggan_noHP) values (:pelanggan_noHP)");
+    $pelanggan_id->execute(
+        [':pelanggan_noHP' => $_POST['pelanggan_noHp']]
+    );
     $stmt = $conn->prepare(
         "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis)"
     );
@@ -13,12 +17,16 @@ try{
     $stmt = $conn->prepare(
         "insert into detail_pesanan (pesanan_id, menu_id, dp_kuantitas) values (:pesanan_id, :menu_id, :dp_kuantitas)"
     );
-    $stmt->execute([
-        ':pesanan_id' => '$pesanan_id',
-        ':dp_kuantitas' => $_POST['dp_kuantitas']
-    ]);
+    foreach($_POST['dp_kuantitas'] as $menu_id => $kuantitas){
+        if ($kuantitas <=0) continue;
+        $stmt->execute([
+            ':pesanan_id' => $pesanan_id,
+            ':menu_id' => $menu_id,
+            ':dp_kuantitas' => $kuantitas
+        ]);
+    }
 
-header("Location: /public/tambah.php?status=sukses");
+header("Location: /public/tambah.php?pesanan_id=" . $pesanan_id);
 }catch (PDOException $e){
     echo "Gagal menambah pesanan: " . $e->getMessage();
 }
