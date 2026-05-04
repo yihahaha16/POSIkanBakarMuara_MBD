@@ -3,7 +3,12 @@
     <head>
         <title>Beranda</title>
     </head>
-    <body>
+        <body style="font-family:Arial; display:flex; flex-direction: column;justify-content:center; align-items:center;margin-top:30px">
+    
+    <div style="text-align:center;background:#f44236;width:540px;height:100px;border-radius:20px 20px 0 0;color:white">    
+    <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1>
+    </div> 
+     <div style="background:#f9f9f9;width:500px;height:300px;border-radius:0px 0px 20px 20px;padding:20px;text-align:center">
         <form action="../process/insert.php" method="post">
            Nama: <input type="text" name=pelanggan_nama><br>
             Nomor Telepon: <input type="text" name=pelanggan_noHp><br>
@@ -45,5 +50,6 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <button type="submit">Pesan</button>
 </a>
  </form>
+     </div>
     </body>
 </html>
