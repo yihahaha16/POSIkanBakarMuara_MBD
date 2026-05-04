@@ -10,7 +10,6 @@ $username,
 $password
 );
 $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "DB terhubung";
 } catch (PDOException $e) {
 die("Koneksi database gagal: " . $e->getMessage());
 }
