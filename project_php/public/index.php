@@ -5,7 +5,7 @@
     </head>
     <body>
         <form action="../process/insert.php" method="post">
-           <!--Nama: <input type="text" name=pelanggan_nama><br>-->
+           Nama: <input type="text" name=pelanggan_nama><br>
             Nomor Telepon: <input type="text" name=pelanggan_noHp><br>
             Tanggal pesan: <input type="date" name=pesanan_tanggal><br>
             Nomor Meja: <input type="text" name=pesanan_noMeja><br>
