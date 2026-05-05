@@ -3,13 +3,10 @@
     <head>
         <title>Beranda</title>
     </head>
-<style>
-table, td, th {
-border: 1px solid; }
-td, th {
-padding: 5px; }
-table {
-border-collapse: collapse; } </style>
+<style> 
+table, td, th {border: 1px solid; }
+td, th { padding: 5px; }
+table { border-collapse: collapse; } </style>
 <body style="font-family:Arial; display:flex; flex-direction: column;justify-content:center; align-items:center;margin-top:30px">    
     <div style="text-align:center;background:#f44236;width:530px;height:100px;border-radius:20px 20px 0 0;color:white">    
     <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1> </div> 
