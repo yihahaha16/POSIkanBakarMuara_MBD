@@ -6,21 +6,26 @@ require_once '../config/database.php';
     <head>
         <title>Hapus Pesanan</title>
     </head>
-    <body>
+    <body style="font-family:Arial; display:flex; flex-direction: column;justify-content:center; align-items:center;margin-top:170px">
+        <div style="text-align:center;background:#f44236;width:530px;height:50px;border-radius:20px 20px 0 0;color:white"> 
         <?php 
         $pesanan_id=$_GET['pesanan_id'];
         $menu_id=$_GET['menu_id'];   
         $stmt=$conn->query("SELECT menu_nama FROM menu WHERE menu_id='$menu_id'");
         $data=$stmt->fetch(PDO::FETCH_ASSOC);
         ?>
-        <p>Apakah anda yakin ingin menghapus pesanan <?= $data['menu_nama']?></p>
+        <p>Apakah anda yakin ingin menghapus pesanan <strong><?= $data['menu_nama']?> </strong>?</p>
+        </div>
+        <div style="background:#f9f9f9;width:510px;height:30px;border-radius:0px 0px 20px 20px;padding:10px;display:flex; gap: 40px; justify-content:center;">
         <form action="../process/delete.php" method="post">
              <input type="hidden" name="pesanan_id" value="<?= $pesanan_id ?>">
     <input type="hidden" name="menu_id" value="<?= $menu_id ?>">
-        <button type="submit">Ya</button>
+        <button style="background-color:#f44236;border:none;border-radius:5px;padding:7px;width:80px;color:white;cursor: pointer;" type="submit">Ya</button>
         </form>
-        <a href="tambah.php&pesanan_id=<?=  $pesanan_id?>">
-            <button type="button">Tidak</button>
+        
+        <a href="tambah.php?pesanan_id=<?=  $pesanan_id?>">
+            <button style="border:2px solid #f44236;border-radius:5px;padding:5.5px;width:75px;color:black;cursor: pointer;" type="button">Tidak</button>
         </a>
+        </div>
     </body>
 </html>
