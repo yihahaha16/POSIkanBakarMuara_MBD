@@ -2,14 +2,16 @@
 require_once "../config/database.php";
 
 $pesanan_id = $_GET['pesanan_id'];
+$menu_id = $_GET['menu_id'];
+
 $stmt = $conn->prepare("
     select dp.menu_id, m.menu_nama, dp.dp_kuantitas
     from detail_pesanan dp
     join menu m on dp.menu_id = m.menu_id
-    where dp.pesanan_id = :pesanan_id
+    where dp.pesanan_id = :pesanan_id and dp.menu_id = :menu_id
 ");
-$stmt->execute([':pesanan_id' => $pesanan_id]);
-$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$stmt->execute([':pesanan_id' => $pesanan_id, ':menu_id' => $menu_id]);
+$data = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -24,26 +26,23 @@ $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div style="text-align:center; background:#f44236; width:530px; height:100px; border-radius:20px 20px 0 0; color:white">    
     <h1 style="margin-top:15px; margin-bottom:0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1>
     </div>
-</body>
 
-<body style="font-family:Arial; background:#f5f5f5;">
+<div style="font-family:Arial; background:#f5f5f5;">
 <div style="width:400px; margin:0px auto; background:white; padding:20px; border-radius:20px;">
 
 <h2 style="text-align:center;">Edit Kuantitas</h2>
     <form action="../process/update.php" method="POST">
         <input type="hidden" name="pesanan_id" value="<?= $pesanan_id ?>">
+        <input type="hidden" name="menu_id" value="<?= $menu_id ?>">
 
-        <?php foreach ($data as $row): ?>
             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
-                <span><?= $row['menu_nama'] ?></span>
+                <p><?= $data['menu_nama'] ?></p>
 
                 <div style="display:flex; align-items:center; gap:5px;">
-                    <input type="number" name="dp_kuantitas[<?= $row['menu_id'] ?>]" id="kuantitas-<?= $row['menu_id'] ?>" 
-                    value="<?= $row['dp_kuantitas'] ?>" class="kuantitas_input" min="1" 
+                    <input type="number" name="kuantitas" value="<?= $data['dp_kuantitas'] ?>" min="1" 
                     style="width:150px; text-align:left; border:1px solid #ccc; border-radius:5px; padding:3px;">
                 </div>
             </div>
-        <?php endforeach; ?>
 
         <div style="display:flex; justify-content:center; gap:15px; margin-top:20px;">
         <button style="background-color:#f44236; border:none; border-radius:5px; padding:5px; 
