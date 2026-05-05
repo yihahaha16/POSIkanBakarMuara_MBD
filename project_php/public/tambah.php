@@ -6,6 +6,22 @@
     <title>Tambah Menu</title>
 </head>
 <body>
+    <style>
+table, td, th {
+  border: 1px solid;
+}
+td, th {
+  padding: 5px;
+}
+table {
+  border-collapse: collapse;
+}
+</style>
+    <body style="font-family:Arial; display:flex; flex-direction: column;justify-content:center; align-items:center;margin-top:30px">
+    <div style="text-align:center;background:#f44236;width:530px;height:100px;border-radius:20px 20px 0 0;color:white">    
+    <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1>
+    </div> 
+<table style="width:470px">
     <?php
     require_once "..\config\database.php";
     $pesanan_id = $_GET['pesanan_id'];
@@ -23,8 +39,10 @@
     $grandtotal->execute([':pesanan_id'=>$pesanan_id]);
     $pesanan_grandtotal = $grandtotal->fetch(PDO::FETCH_ASSOC);
     ?>
-        <h2>Halo <?=$pelanggan_nama['pelanggan_nama']?>, silahkan periksa kembali pesanan Anda ya!</h2>
-        <h3>Menu yang telah Anda pilih: <br></h3>
+    <div style="margin-top:7px;margin-bottom:0px;text-align:center">
+        <h2>Halo <?=$pelanggan_nama['pelanggan_nama']?>,</h2><h2> silahkan periksa kembali pesanan Anda.</h2>
+    </div>
+        <h3>Menu yang telah Anda pilih:</h3>
     <table border="1">
         <tr>
             <th>Nama</th>
@@ -48,8 +66,8 @@
             </tr>
         <?php endforeach;?>
     </table>
-    <?php
-    ?>
-    <h4>Grantotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h4>
+    <br>
+</table>
+    <h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h3>
 </body>
 </html>
