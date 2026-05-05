@@ -3,8 +3,8 @@ require_once "..\config\database.php";
 try{
     $pelanggan_id = $conn->prepare("insert ignore into pelanggan (pelanggan_noHP, pelanggan_nama) values (:pelanggan_noHP, :pelanggan_nama)");
     $pelanggan_id->execute(
-        [':pelanggan_noHP' => $_POST['pelanggan_noHp']],
-        [':pelanggan_nama' => $_POST['pelanggan_nama']]
+        [':pelanggan_noHP' => $_POST['pelanggan_noHp'],
+        ':pelanggan_nama' => $_POST['pelanggan_nama']]
     );
     $stmt = $conn->prepare(
         "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis)"
