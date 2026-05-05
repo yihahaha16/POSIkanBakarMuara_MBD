@@ -1,0 +1,4 @@
+Studi kasus ini adalah Sistem Pemesanan Restoran Ikan Bakar Muara
+Sistem ini dibuat untuk pelanggan melakukan agar dapat melakukan pemesanan secara mandiri. Pada halaman index, pelanggan akan diminta untuk mengisi informasi data pelanggan, seperti nomor telefon, nama dan dilanjukan untuk mengisi data pesanan nomor meja, jenis pesanan, dan menyesuaikan kuantitas menu yang diinginkan. Data ini akan disimpan pada database menggunakan PDO dan PHP.
+Selanjutnya pelanggan akan dialihkan ke halaman tambah, pada halaman ini akan menampilkan menu yang telah dipilih oleh pelanggan dan detail pesanan seperti kuantitas yang dipesan, subtotal perproduk, dan grandtotal pesanan. 
+Pelanggan pada kolom aksi, dapat mengubah kuantitas dengan tombol edit yang akan di arahkan pada halaman edit dan dapat menghapus pesanan dengan tombol hapus yang akan di arahkan pada halaman hapus.
