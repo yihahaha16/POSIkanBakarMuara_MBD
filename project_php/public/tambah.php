@@ -26,12 +26,14 @@ table {
     require_once "..\config\database.php";
     $pesanan_id = $_GET['pesanan_id'];
     $stmt = $conn->prepare(
-        'Select dp.pesanan_id, m.menu_id, m.menu_nama, m.menu_kategori, m.menu_harga, dp.dp_kuantitas, dp.dp_total from detail_pesanan dp join menu m on dp.menu_id = m.menu_id where dp.pesanan_id = :pesanan_id'
+        'Select dp.pesanan_id, m.menu_id, m.menu_nama, m.menu_kategori, m.menu_harga, dp.dp_kuantitas, 
+        dp.dp_total from detail_pesanan dp join menu m on dp.menu_id = m.menu_id where dp.pesanan_id = :pesanan_id'
         );
         $stmt->execute([':pesanan_id' => $pesanan_id]);
         $dp = $stmt->fetchAll(PDO::FETCH_ASSOC);
         
-    $pelanggan = $conn->prepare('select p.pelanggan_nama, ps.pelanggan_noHP from pesanan ps join pelanggan p on ps.pelanggan_noHP = p.pelanggan_noHP where ps.pesanan_id = :pesanan_id');
+    $pelanggan = $conn->prepare('select p.pelanggan_nama, ps.pelanggan_noHP from pesanan ps join pelanggan p on 
+    ps.pelanggan_noHP = p.pelanggan_noHP where ps.pesanan_id = :pesanan_id');
     $pelanggan->execute([':pesanan_id' => $pesanan_id]);
     $pelanggan_nama = $pelanggan->fetch(PDO::FETCH_ASSOC);
 
@@ -60,8 +62,9 @@ table {
             <td><?=$row['dp_kuantitas']?></td>
             <td><?=$row['dp_total']?></td>
             <td>
-            <button><a href="edit.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id'] ?>">Edit</a></button>
-            <button><a href="hapus.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id']?> ">Hapus</a></button>
+            <a href="edit.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id'] ?>"><button style="display:inline-block; border:2px solid #f44236; border-radius:5px; padding:3px;
+            width:50px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Edit</button></a>
+            <a href="hapus.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id']?> "><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:3px;width:50px;color:white;cursor: pointer">Hapus</button></a>
             </td>
             </tr>
         <?php endforeach;?>
