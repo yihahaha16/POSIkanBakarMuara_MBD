@@ -54,19 +54,5 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
     </form>
 </div>
 
-<script>
-function plus(id) {
-    let input = document.getElementById('kuantitas-' + id);
-    input.value = parseInt(input.value) + 1;
-}
-
-function minus(id) {
-    let input = document.getElementById('kuantitas-' + id);
-    if (input.value > 1) {
-        input.value = parseInt(input.value) - 1;
-    }
-}
-</script>
-
 </body>
 </html>
