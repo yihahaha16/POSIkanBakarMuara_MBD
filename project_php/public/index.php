@@ -12,10 +12,10 @@ table { border-collapse: collapse; } </style>
     <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1> </div> 
      <div style="background:#f9f9f9;width:470px;height:360px;border-radius:0px 0px 20px 20px;padding:30px">
         <form action="../process/insert.php" method="post">
-           Nama: <input type="text" name=pelanggan_nama><br>
-            Nomor Telepon: <input type="text" name=pelanggan_noHp><br>
-            Tanggal pesan: <input type="date" name=pesanan_tanggal><br>
-            Nomor Meja: <input type="text" name=pesanan_noMeja><br>
+           Nama: <input type="text" name=pelanggan_nama required><br>
+            Nomor Telepon: <input type="text" name=pelanggan_noHp required><br>
+            Tanggal pesan: <input type="date" name=pesanan_tanggal required><br>
+            Nomor Meja: <input type="text" name=pesanan_noMeja required><br>
             Jenis: <select style="padding: 4px" name="pesanan_jenis">
             <option value="Dine in">Dine in</option>
             <option value="Take away">Take away</option></select>
