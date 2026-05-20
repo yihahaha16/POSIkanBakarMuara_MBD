@@ -11,6 +11,7 @@ class Menu{
         Tersedia,
         Habis
     }
+    //Encapsulation: dilindungi supaya tidak bisa diubah sembarangan dari luar class.
     private String menuId;
     private String menuNama;
     private Status menuStatus;          
@@ -45,16 +46,16 @@ class Menu{
 
 }
 
-class MenuReguler extends Menu{
-    private int hargaMenuReguler;
+class MenuHarga extends Menu{
+    private int hargaMenuHarga;
 
-    public MenuReguler(String menuId, String menuNama, Status menuStatus, int hargaMenuReguler){
+    public MenuHarga(String menuId, String menuNama, Status menuStatus, int hargaMenuHarga){
         super(menuId, menuNama, menuStatus);
-        this.hargaMenuReguler = hargaMenuReguler;
+        this.hargaMenuHarga = hargaMenuHarga;
     }
 
-    public int getHargaMenuReguler(){
-        return hargaMenuReguler;
+    public int getHargaMenuHarga(){
+        return hargaMenuHarga;
     }
 }
 
@@ -139,7 +140,7 @@ class TakeAway extends Pesanan{
 class Pelanggan{
     enum Status{
         Member,
-        Reguler
+        Guest
     }
     private String pelangganId; 
     private String pelangganNama;
@@ -200,10 +201,10 @@ class Member extends Pelanggan{
     }
 }
 
-// SUBCLASS REGULER (DARI SUPER CLASS PELANGGAN)
-class Reguler extends Pelanggan{
-    public Reguler(String pelangganId, String pelangganNama, Status status){
-        super(pelangganId, pelangganNama, Status.Reguler);
+// SUBCLASS Guest (DARI SUPER CLASS PELANGGAN)
+class Guest extends Pelanggan{
+    public Guest(String pelangganId, String pelangganNama, Status status){
+        super(pelangganId, pelangganNama, Status.Guest);
     }
 }
 
@@ -310,9 +311,9 @@ public class Tugas1 {
         System.out.println("=== RESTORAN IKAN BAKAR MUARA ===");
         System.out.println();
 
-        // Pelanggan reguler (1) melihat menu reguler, menambahkan pesanan dine in, dan melakukan pembayaran cash
-        Pelanggan pl1 = new Reguler("PL001", "Anita", Pelanggan.Status.Reguler);
-        Menu m1 = new MenuReguler("M001", "Nila Bakar Muara", Menu.Status.Tersedia, 23000);
+        // Pelanggan Guest (1) melihat menu Guest, menambahkan pesanan dine in, dan melakukan pembayaran cash
+        Pelanggan pl1 = new Guest("PL001", "Anita", Pelanggan.Status.Guest);
+        Menu m1 = new MenuHarga("M001", "Nila Bakar Muara", Menu.Status.Tersedia, 23000);
         Pesanan ps1 = new DineIn("PS001", 52000, "A1");
         Pembayaran pb1 = new PembayaranCash(52000, 250000);
         
