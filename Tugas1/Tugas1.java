@@ -1,4 +1,6 @@
 package Tugas1;
+import java.util.ArrayList;
+import java.util.Scanner; 
 
 //INTERFACE: digunakan untuk class yang mempunyai method sama namun logika cetak struk yang berbeda (PembayaranQRIS dan PembayaranCash)
 interface CetakStruk {
@@ -78,6 +80,7 @@ class Pesanan {
     private String pesananId;
     private int pesananTotal;
     private int pesananPajak;
+    static float pajak = 0.1f;
     //constructor
     public Pesanan(String pesananId, int pesananTotal){ 
         this.pesananId = pesananId;
@@ -95,7 +98,7 @@ class Pesanan {
     }
     //Hitung pajak dan tampilkan total pesanan
     public void pesan() {
-        pesananPajak = (int)(pesananTotal * 0.1);
+        pesananPajak = (int)(pesananTotal * pajak);//casting
         int totalBayar = pesananTotal + pesananPajak;
         System.out.println("Pesanan telah dibuat");
         System.out.println("Total\t\t: Rp" + pesananTotal);
@@ -174,6 +177,7 @@ class Member extends Pelanggan{
     //encapsulation
     private int poin = 0;
     private String pelangganNoHp;
+    private String password;
     //constructor
     public Member(String pelangganId, String pelangganNama, Status status, String pelangganNoHp){
         super(pelangganId, pelangganNama, Status.Member);
@@ -309,45 +313,41 @@ class PembayaranQRIS extends Pembayaran implements CetakStruk{
 }
 
 public class Tugas1 {
+    static Scanner input = new Scanner(System.in); //static karena mau dipanggil langsung tanpa buat object dulu
+    ArrayList<Member> members = new ArrayList<>();
+    static void dashboard1(){ //harus static juga karena scannernya static
+        System.out.println("===Selamat Datang di Ikan Bakar Muara===\n===1. Login Member\n2. Daftar menjadi Member\n3. Lanjut Sebagai Guest\n0. Keluar");
+        System.out.println("Pilih: ");
+        int pilih = input.nextInt(); 
+        switch(pilih){
+        case 1:
+        loginMember();
+        break;
+        case 2:
+        daftarMember();
+        break;
+        case 3:
+        masukGuest();
+        break;
+        default:
+        System.out.println("Pilihan tidak ada");
+        dashboard1();
+        }
+    }
+    static void loginMember(){
+
+    }
+    static void daftarMember(){
+    System.out.println("Nama Lengkap:");
+    int nama=input.nextInt();
+    System.out.println("Nomor Telepon:");
+        int no=input.nextInt();
+    System.out.println("Password:");
+        int pass=input.nextInt();
+        members.add(new Member(, , ));
+    }
     public static void main(String[] args) {
-        // System.out.println("========= SELAMAT DATANG ========");
-        // System.out.println("=== RESTORAN IKAN BAKAR MUARA ===");
-        // System.out.println();
 
-        // // Pelanggan Guest (1) melihat menu Guest, menambahkan pesanan dine in, dan melakukan pembayaran cash
-        // Pelanggan pl1 = new Guest("PL001", "Anita", Pelanggan.Status.Guest);
-        // Menu m1 = new MenuHarga("M001", "Nila Bakar Muara", Menu.Status.Tersedia, 23000);
-        // Pesanan ps1 = new DineIn("PS001", 52000, "A1");
-        // Pembayaran pb1 = new PembayaranCash(52000, 250000);
-        
-        // pl1.menampilkanPelanggan();
-        // System.out.println();
-
-        // m1.tampilMenu();
-        // System.out.println();
-
-        // ps1.pesan();
-        // ps1.proses();
-        // System.out.println();
-
-        // pb1.bayar();
-
-        // // Pelanggan member (2) melihat menu poin, menambahkan pesanan take away, dan melakukan pembayaran qris
-        // Pelanggan pl2 = new Member("P002", "Budi", Pelanggan.Status.Member, "089667788995");
-        // Menu m2 = new MenuPoin("M010", "Tumis Kangkung Poin", Menu.Status.Tersedia, 15000);
-        // Pesanan ps2 = new TakeAway("PS002", 15000);
-        // Pembayaran pb2 = new PembayaranQRIS(15000, 60000);
-        
-        // pl2.menampilkanPelanggan();
-        // System.out.println();
-
-        // m2.tampilMenu();
-        // System.out.println();
-
-        // ps2.pesan();
-        // ps2.proses();
-        // System.out.println();
-
-        // pb2.bayar();
+       
     }
 }
