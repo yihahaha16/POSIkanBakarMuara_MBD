@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "..\config\database.php";
 try{
     $pelanggan_id = $conn->prepare("insert ignore into pelanggan (pelanggan_noHP, pelanggan_nama) values (:pelanggan_noHP, :pelanggan_nama)");
@@ -6,15 +7,19 @@ try{
         [':pelanggan_noHP' => $_POST['pelanggan_noHp'],
         ':pelanggan_nama' => $_POST['pelanggan_nama']]
     );
-    $stmt = $conn->prepare(
-        "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis)"
-    );
-    $stmt->execute([
-        ':pelanggan_noHP' => $_POST['pelanggan_noHp'],
-        ':pesanan_noMeja' => $_POST['pesanan_noMeja'],
-        ':pesanan_jenis' => $_POST['pesanan_jenis']
-    ]);
-    $pesanan_id = $conn->lastInsertId();
+    if (!isset($_SESSION['pesanan_id'])){
+        $stmt = $conn->prepare(
+            "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis)"
+        );
+        $stmt->execute([
+            ':pelanggan_noHP' => $_POST['pelanggan_noHp'],
+            ':pesanan_noMeja' => $_POST['pesanan_noMeja'],
+            ':pesanan_jenis' => $_POST['pesanan_jenis']
+        ]);
+        $_SESSION['pesanan_id'] = $conn->lastInsertId();
+    }
+    $pesanan_id = $_SESSION['pesanan_id'];
+
     $stmt = $conn->prepare(
         "insert into detail_pesanan (pesanan_id, menu_id, dp_kuantitas) values (:pesanan_id, :menu_id, :dp_kuantitas)"
     );
@@ -26,6 +31,7 @@ try{
             ':dp_kuantitas' => $kuantitas
         ]);
     }
+
 
 header("Location: /public/tambah.php?pesanan_id=" . $pesanan_id);
 }catch (PDOException $e){

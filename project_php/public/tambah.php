@@ -23,6 +23,7 @@ table {
     </div> 
 <table style="width:470px">
     <?php
+    session_start();
     require_once "..\config\database.php";
     $pesanan_id = $_GET['pesanan_id'];
     $stmt = $conn->prepare(
@@ -71,6 +72,8 @@ table {
     </table>
     <br>
 </table>
-    <h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h3>
+<h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h3>
+<br>
+<a href="savepesanan.php?pesanan_id=<?= $pesanan_id?>"><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:3px;width:100px;color:white;cursor: pointer">Simpan Pesanan</button></a>
 </body>
 </html>
