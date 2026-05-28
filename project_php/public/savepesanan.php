@@ -32,7 +32,7 @@ table {
     ?>
     <h3 style="margin-top:7px;margin-bottom:7px;text-align:center"> Grandtotal Anda: Rp <?= $dp['pesanan_grandtotal'] ?></h3>
     Mohon tunggu hidangan Anda, Silahkan proses pembayaran di Kasir <br><br>
-    <?php unset($_SESSION[':pesanan_id'])?>
+    <?php unset($_SESSION['pesanan_id'])?>
     <a href="index.php"><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:3px;width: 100px;color:white;cursor: pointer">Kembali ke Beranda</button></a>
 </table>
 </html>

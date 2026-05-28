@@ -20,6 +20,9 @@ try{
     }
     $pesanan_id = $_SESSION['pesanan_id'];
 
+    $delete = $conn->prepare("delete from detail_pesanan where pesanan_id = :pesanan_id");
+    $delete -> execute([':pesanan_id' => $pesanan_id]);
+
     $stmt = $conn->prepare(
         "insert into detail_pesanan (pesanan_id, menu_id, dp_kuantitas) values (:pesanan_id, :menu_id, :dp_kuantitas)"
     );
