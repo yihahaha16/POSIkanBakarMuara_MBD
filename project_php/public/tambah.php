@@ -18,10 +18,11 @@ table {
 }
 </style>
     <body style="font-family:Arial; display:flex; flex-direction: column;justify-content:center; align-items:center;margin-top:30px">
-    <div style="text-align:center;background:#f44236;width:530px;height:100px;border-radius:20px 20px 0 0;color:white">    
+    <div style="text-align:center;background:#f44236;width:710px;height:100px;border-radius:20px 20px 0 0;color:white">    
     <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1>
     </div> 
-<table style="width:470px">
+   <div style="background:#f9f9f9;width:710px;border-radius:0px 0px 20px 20px;padding:30px;box-sizing:border-box;">
+<table>
     <?php
     session_start();
     require_once "..\config\database.php";
@@ -59,7 +60,7 @@ table {
             <tr>
             <td><?=$row['menu_nama']?></td>
             <td><?=$row['menu_kategori']?></td>
-            <td><?=$row['menu_harga']?></td>
+            <td>Rp <?=$row['menu_harga']?></td>
             <td><?=$row['dp_kuantitas']?></td>
             <td><?=$row['dp_total']?></td>
             <td>
@@ -73,7 +74,8 @@ table {
     <br>
 </table>
 <h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h3>
-<br>
-<a href="savepesanan.php?pesanan_id=<?= $pesanan_id?>"><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:3px;width:100px;color:white;cursor: pointer">Simpan Pesanan</button></a>
-</body>
+<div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
+<a href="index.php"><button style="background-color:#e0e0e0;border:2px solid #e0e0e0;border-radius:5px;padding:7px;width:130px;color:black;cursor:pointer">Tambah Pesanan</button></a>
+<a href="savepesanan.php?pesanan_id=<?= $pesanan_id?>"><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:7px;width:120px;color:white;cursor:pointer">Simpan Pesanan</button></a>
+</div></div></body>
 </html>
