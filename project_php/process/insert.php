@@ -9,7 +9,7 @@ try{
     );
     if (!isset($_SESSION['pesanan_id'])){
         $stmt = $conn->prepare(
-            "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis,kasir_id) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis, :kasir_id)"
+            "insert into pesanan (pelanggan_noHP, pesanan_tanggal, pesanan_noMeja, pesanan_jenis, kasir_id) values (:pelanggan_noHP, now(), :pesanan_noMeja, :pesanan_jenis, :kasir_id)"
         );
         $stmt->execute([
             ':pelanggan_noHP' => $_POST['pelanggan_noHp'],
@@ -18,15 +18,16 @@ try{
             ':kasir_id'=> $_POST['kasir_id']
         ]);
         $_SESSION['pesanan_id'] = $conn->lastInsertId();
-    }
-    $pesanan_id = $_SESSION['pesanan_id'];
+        }
+        $pesanan_id = $_SESSION['pesanan_id'];
+        $_SESSION['dp_kuantitas'] = $_POST['dp_kuantitas'];
    foreach($_POST['dp_kuantitas'] as $menu_id => $kuantitas){
     if ($kuantitas <= 0) continue;
     $cek = $conn->prepare("SELECT dp_kuantitas FROM detail_pesanan WHERE pesanan_id = :pesanan_id AND menu_id = :menu_id");
     $cek->execute([ ':pesanan_id' => $pesanan_id,':menu_id' => $menu_id]);
     $data = $cek->fetch(PDO::FETCH_ASSOC);
     if ($data){
-        $update = $conn->prepare("UPDATE detail_pesanan SET dp_kuantitas = dp_kuantitas + :kuantitas WHERE pesanan_id = :pesanan_id AND menu_id = :menu_id");
+        $update = $conn->prepare("UPDATE detail_pesanan SET dp_kuantitas = :kuantitas WHERE pesanan_id = :pesanan_id AND menu_id = :menu_id");
         $update->execute([':kuantitas' => $kuantitas,':pesanan_id' => $pesanan_id,':menu_id' => $menu_id]);
     }
     else {

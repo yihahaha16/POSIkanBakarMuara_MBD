@@ -12,11 +12,11 @@ else {
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
 if (isset($_SESSION['pesanan_id'])) {
-           $pesanan_id = $_SESSION['pesanan_id'];
-  $pesanan = $conn->prepare("SELECT p.pelanggan_nama,ps.pelanggan_noHP,ps.pesanan_tanggal,ps.pesanan_noMeja,ps.pesanan_jenis,ps.kasir_id FROM pesanan ps JOIN pelanggan p ON ps.pelanggan_noHP = p.pelanggan_noHP WHERE ps.pesanan_id = :pesanan_id");
-      $pesanan->execute([':pesanan_id' => $pesanan_id]);
-     $data2 = $pesanan->fetch(PDO::FETCH_ASSOC);
-     }
+    $pesanan_id = $_SESSION['pesanan_id'];
+    $pesanan = $conn->prepare("SELECT p.pelanggan_nama,ps.pelanggan_noHP,ps.pesanan_tanggal,ps.pesanan_noMeja,ps.pesanan_jenis,ps.kasir_id FROM pesanan ps JOIN pelanggan p ON ps.pelanggan_noHP = p.pelanggan_noHP WHERE ps.pesanan_id = :pesanan_id");
+    $pesanan->execute([':pesanan_id' => $pesanan_id]);
+    $data2 = $pesanan->fetch(PDO::FETCH_ASSOC);
+}
 
 ?>
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ Minuman
                 <td style="text-align:center"><?= $row['menu_kategori']; ?></td>
                 <td style="text-align:center">Rp <?= $row['menu_harga']; ?></td>
                 <td>
-                <input type="number" name="dp_kuantitas[<?= $row['menu_id']; ?>]" min="0" max="10" value="0"></td></tr>
+                <input type="number" name="dp_kuantitas[<?= $row['menu_id']; ?>]" min="0" max="10" value="<?= $_SESSION['dp_kuantitas'][$row['menu_id']] ?? 0 ?>"></td></tr>
                 <?php endforeach; ?> </table>
             <div style="margin-top:15px;justify-content:center;display:flex ">
             <a href = "tambah.php">

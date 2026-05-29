@@ -2,6 +2,7 @@
 session_start();
 
 unset($_SESSION['pesanan_id']);
+unset($_SESSION['dp_kuantitas']);
 ?>
 <!DOCTYPE html>
 <html>
