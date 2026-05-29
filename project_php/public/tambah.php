@@ -44,9 +44,9 @@ table {
     $pesanan_grandtotal = $grandtotal->fetch(PDO::FETCH_ASSOC);
     ?>
     <div style="margin-top:7px;margin-bottom:0px;text-align:center">
-        <h2>Halo <?=$pelanggan_nama['pelanggan_nama']?>, silahkan periksa kembali pesanan Anda.</h2>
+        <h2>Pesanan atas nama: <?=$pelanggan_nama['pelanggan_nama']?>, harap periksa kembali pesanan.</h2>
     </div>
-        <h3>Menu yang telah Anda pilih:</h3>
+        <h3>Menu yang telah pilih:</h3>
     <table border="1">
         <tr>
             <th>Nama</th>
