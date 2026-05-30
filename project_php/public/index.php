@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once '../config/database.php';
 $kategori = $_GET['kategori'] ?? '';
 if ($kategori != '') {
@@ -32,10 +31,12 @@ table { border-collapse: collapse; } </style>
     <div style="text-align:center;background:#f44236;width:530px;height:100px;border-radius:20px 20px 0 0;color:white">    
     <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1> </div> 
     <div style="background:#f9f9f9;width:470px;border-radius:0px 0px 20px 20px;padding:30px">
-        <form action="../process/insert.php" method="post">
-           Nama: <input type="text" name=pelanggan_nama required value="<?= $data2['pelanggan_nama'] ?? '' ?>"><br>
-            Nomor Telepon: <input type="text" name=pelanggan_noHp required  value="<?= $data2['pelanggan_noHP'] ?? '' ?>"><br>
-       Tanggal: <input type="date" name="pesanan_tanggal" value="<?= $data2['pesanan_tanggal'] ?? date('Y-m-d') ?>" readonly>
+    <a href="../process/batal.php"> <button style="display:background-color:gray; border-radius:5px; padding:7px;
+            width:130px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Batalkan Pesanan</button><br><br></a>
+    <form action="../process/insert.php" method="post">
+           Nama: <input type="text" name=pelanggan_nama pattern="[A-Za-z]*" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')" required title="Nama hanya berupa huruf"value="<?= $data2['pelanggan_nama'] ?? '' ?>"><br>
+            Nomor Telepon: <input type="text" name=pelanggan_noHp inputmode="numeric" pattern="[0-9]{10,15}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required title="Nomor Telepon hanya berupa angka" value="<?= $data2['pelanggan_noHP'] ?? '' ?>"><br>
+            Tanggal: <input type="date" name="pesanan_tanggal" value="<?= $data2['pesanan_tanggal'] ?? date('Y-m-d') ?>" readonly>
 <br>            Nomor Meja: <input type="text" name=pesanan_noMeja required value="<?= $data2['pesanan_noMeja'] ?? '' ?>"><br>
                 Kasir:  <input type="text" name=kasir_id required value="<?= $data2['kasir_id'] ?? '' ?>"><br>
             Jenis: <select style="padding: 4px" name="pesanan_jenis">

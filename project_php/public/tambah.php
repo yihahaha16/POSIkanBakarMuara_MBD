@@ -24,7 +24,6 @@ table {
    <div style="background:#f9f9f9;width:710px;border-radius:0px 0px 20px 20px;padding:30px;box-sizing:border-box;">
 <table>
     <?php
-    session_start();
     require_once "..\config\database.php";
     $pesanan_id = $_GET['pesanan_id'];
     $stmt = $conn->prepare(
@@ -46,6 +45,8 @@ table {
     <div style="margin-top:7px;margin-bottom:0px;text-align:center">
         <h2>Pesanan atas nama: <?=$pelanggan_nama['pelanggan_nama']?>, harap periksa kembali pesanan.</h2>
     </div>
+    <a href="../process/batal.php"> <button style="display:background-color:gray; border-radius:5px; padding:7px;
+            width:130px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Batalkan Pesanan</button><br><br></a>
         <h3>Menu yang telah pilih:</h3>
     <table border="1">
         <tr>

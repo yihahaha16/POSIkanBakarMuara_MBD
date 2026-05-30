@@ -23,7 +23,6 @@ table {
     </div> 
 <div style="background:#f9f9f9;width:530px;border-radius:0px 0px 20px 20px;padding:30px;box-sizing:border-box;text-align:center;">
     <?php 
-    session_start();
     require_once "..\config\database.php";
     $pesanan_id = $_SESSION['pesanan_id'];
     $stmt = $conn->prepare("Select pesanan_grandtotal FROM pesanan where pesanan_id = :pesanan_id");

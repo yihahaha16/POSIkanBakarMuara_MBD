@@ -1,8 +1,8 @@
 <?php
-session_start();
-
+require_once "..\config\database.php";
 unset($_SESSION['pesanan_id']);
 unset($_SESSION['dp_kuantitas']);
+session_destroy();
 ?>
 <!DOCTYPE html>
 <html>

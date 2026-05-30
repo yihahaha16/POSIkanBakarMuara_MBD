@@ -1,8 +1,12 @@
 <?php
+
 $host = "localhost";
-$dbname = "ikanbakarmuara3"; //sesuaikan nama db kalian
+$dbname = "ikanbakarmuara_full"; //sesuaikan nama db kalian
 $username = "root";
-$password = "Sql.06"; //sesuaikan pass db kalian
+$password = ""; //sesuaikan pass db kalian
+
+session_start();
+   
 try {
 $conn = new PDO(
 "mysql:host=$host;dbname=$dbname;charset=utf8",

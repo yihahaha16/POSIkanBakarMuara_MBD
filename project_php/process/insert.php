@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "..\config\database.php";
 try{
     $pelanggan_id = $conn->prepare("insert ignore into pelanggan (pelanggan_noHP, pelanggan_nama) values (:pelanggan_noHP, :pelanggan_nama)");
