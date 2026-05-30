@@ -17,6 +17,9 @@ if (isset($_SESSION['pesanan_id'])) {
     $data2 = $pesanan->fetch(PDO::FETCH_ASSOC);
 }
 
+$stmt2 = $conn->query("SELECT kasir_id FROM kasir");
+$data3 = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,19 +34,26 @@ table { border-collapse: collapse; } </style>
     <div style="text-align:center;background:#f44236;width:530px;height:100px;border-radius:20px 20px 0 0;color:white">    
     <h1 style="margin-top:15px;margin-bottom: 0px">Sistem Pemesanan </h1><h1 style="margin-top: 0px"> Ikan Bakar Muara</h1> </div> 
     <div style="background:#f9f9f9;width:470px;border-radius:0px 0px 20px 20px;padding:30px">
-    <a href="../process/batal.php"> <button style="display:background-color:gray; border-radius:5px; padding:7px;
-            width:130px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Batalkan Pesanan</button><br><br></a>
+  
+<div style="text-align:right; margin-bottom:0px;">
+    <a href="../process/batal.php">
+        <button type="button" style="background-color:white;border:2px solid #f44236;border-radius:5px;padding:7px;width:130px;color:black;cursor:pointer"> Batalkan Pesanan </button> </a></div>
+
     <form action="../process/insert.php" method="post">
-           Nama: <input type="text" name=pelanggan_nama pattern="[A-Za-z]*" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')" required title="Nama hanya berupa huruf"value="<?= $data2['pelanggan_nama'] ?? '' ?>"><br>
-            Nomor Telepon: <input type="text" name=pelanggan_noHp inputmode="numeric" pattern="[0-9]{10,15}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required title="Nomor Telepon hanya berupa angka" value="<?= $data2['pelanggan_noHP'] ?? '' ?>"><br>
+           Nama: <input type="text" name=pelanggan_nama pattern="[A-Za-z]{3,30}" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')" required title="Nama harus terdiri dari 3-30 huruf" value="<?= $data2['pelanggan_nama'] ?? '' ?>"><br>
+            Nomor Telepon: <input type="text" name=pelanggan_noHp inputmode="numeric" pattern="[0-9]{10,15}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required title="Nomor Telepon harus terdiri dari 10-15 angka" value="<?= $data2['pelanggan_noHP'] ?? '' ?>"><br>
             Tanggal: <input type="date" name="pesanan_tanggal" value="<?= $data2['pesanan_tanggal'] ?? date('Y-m-d') ?>" readonly>
-<br>            Nomor Meja: <input type="text" name=pesanan_noMeja required value="<?= $data2['pesanan_noMeja'] ?? '' ?>"><br>
-                Kasir:  <input type="text" name=kasir_id required value="<?= $data2['kasir_id'] ?? '' ?>"><br>
-            Jenis: <select style="padding: 4px" name="pesanan_jenis">
+<br>            Nomor Meja: <input type="text" name=pesanan_noMeja maxlength="3" value="<?= $data2['pesanan_noMeja'] ?? '' ?>"><br>
+                Kasir:<select style="padding: 4px" name="kasir_id"><?php foreach ($data3 as $kasir): ?>
+        <option value="<?= $kasir['kasir_id'] ?>"
+            <?= ($data3['kasir_id'] ?? '') == $kasir['kasir_id'] ? 'selected' : '' ?>>
+            <?= $kasir['kasir_id'] ?>
+        </option><?php endforeach; ?></select><br>
+Jenis: <select style="padding: 4px" name="pesanan_jenis">
             <option value="Dine in" <?= ($data2['pesanan_jenis'] ?? '') == 'Dine in' ? 'selected' : '' ?>>Dine in</option>
     <option value="Take away"<?= ($data2['pesanan_jenis'] ?? '') == 'Take away' ? 'selected' : '' ?>>Take away</option></select>
         <br>
-        <p style="margin-top:7px;margin-bottom:7px;text-align:center"><strong>Daftar Menu</strong></p>
+        <h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Daftar Menu</h3>
        <div style="margin-bottom:10px">
 <a href="public" style="text-decoration:none;"><button style="color:black;background-color:#e0e0e0;border:none;border-radius:5px;padding:7px;width:80px;cursor:pointer;" type="button">Semua</button></a>
 <a href="?kategori=Makanan" style="text-decoration:none;"><button style="color:black;background-color:#e0e0e0;border:none;border-radius:5px;padding:7px;width:80px;cursor:pointer;" type="button">Makanan</button></a>

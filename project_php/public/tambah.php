@@ -44,10 +44,12 @@ table {
     ?>
     <div style="margin-top:7px;margin-bottom:0px;text-align:center">
         <h2>Pesanan atas nama: <?=$pelanggan_nama['pelanggan_nama']?>, harap periksa kembali pesanan.</h2>
+        <div style="text-align:right; margin-bottom:0px;">
+    <a href="../process/batal.php">
+        <button type="button" style="background-color:white;border:2px solid #f44236;border-radius:5px;padding:7px;width:130px;color:black;cursor:pointer"> Batalkan Pesanan </button> </a></div>
+
     </div>
-    <a href="../process/batal.php"> <button style="display:background-color:gray; border-radius:5px; padding:7px;
-            width:130px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Batalkan Pesanan</button><br><br></a>
-        <h3>Menu yang telah pilih:</h3>
+        <h3 style="margin-top:0px;">Menu yang telah pilih:</h3>
     <table border="1">
         <tr>
             <th>Nama</th>

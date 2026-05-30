@@ -1,9 +1,9 @@
 <?php
 
 $host = "localhost";
-$dbname = "ikanbakarmuara_full"; //sesuaikan nama db kalian
+$dbname = "ikanbakarmuara3"; //sesuaikan nama db kalian
 $username = "root";
-$password = ""; //sesuaikan pass db kalian
+$password = "Sql.06"; //sesuaikan pass db kalian
 
 session_start();
    
