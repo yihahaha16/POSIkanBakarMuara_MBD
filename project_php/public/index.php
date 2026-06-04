@@ -43,7 +43,8 @@ table { border-collapse: collapse; } </style>
            Nama: <input type="text" name=pelanggan_nama pattern="[A-Za-z]{3,30}" oninput="this.value = this.value.replace(/[^A-Za-z]/g, '')" required title="Nama harus terdiri dari 3-30 huruf" value="<?= $data2['pelanggan_nama'] ?? '' ?>"><br>
             Nomor Telepon: <input type="text" name=pelanggan_noHp inputmode="numeric" pattern="[0-9]{10,15}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" required title="Nomor Telepon harus terdiri dari 10-15 angka" value="<?= $data2['pelanggan_noHP'] ?? '' ?>"><br>
             Tanggal: <input type="date" name="pesanan_tanggal" value="<?= $data2['pesanan_tanggal'] ?? date('Y-m-d') ?>" readonly>
-<br>            Nomor Meja: <input type="text" name=pesanan_noMeja maxlength="3" value="<?= $data2['pesanan_noMeja'] ?? '' ?>"><br>
+<br>            Nomor Meja: <input type="text" name=pesanan_noMeja maxlength="3" pattern="[A-Z0-9]{1,3}" oninput="this.value = this.value.replace(/[^A-Z0-9]/g, '')" title="Nomor meja maksimal 3 karakter (huruf/angka)" required
+    value="<?= $data2['pesanan_noMeja'] ?? '' ?>" value="<?= $data2['pesanan_noMeja'] ?? '' ?>"><br>
                 Kasir:<select style="padding: 4px" name="kasir_id"><?php foreach ($data3 as $kasir): ?>
         <option value="<?= $kasir['kasir_id'] ?>"
             <?= ($data3['kasir_id'] ?? '') == $kasir['kasir_id'] ? 'selected' : '' ?>>
