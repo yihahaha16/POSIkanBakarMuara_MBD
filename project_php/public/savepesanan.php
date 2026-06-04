@@ -30,7 +30,7 @@ table {
     $dp = $stmt->fetch(PDO::FETCH_ASSOC);
     ?>
     <h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Pesanan berhasil tersimpan!</h3>
-    <h3 style="margin-top:7px;margin-bottom:7px;text-align:center"> Grandtotal: Rp <?= $dp['pesanan_grandtotal'] ?></h3>
+    <h3 style="margin-top:7px;margin-bottom:7px;text-align:center"> Grandtotal: Rp <?= number_format($dp['pesanan_grandtotal'],0,',','.') ?></h3>
      <br>
     <?php //unset($_SESSION['pesanan_id'])?>
     <form action="../process/prosesbayar.php" method="post">

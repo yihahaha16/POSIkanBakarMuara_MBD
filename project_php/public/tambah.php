@@ -62,7 +62,7 @@ table {
             <tr>
             <td><?=$row['menu_nama']?></td>
             <td><?=$row['menu_kategori']?></td>
-            <td>Rp <?=$row['menu_harga']?></td>
+            <td>Rp <?=number_format($row['menu_harga'],0,',','.')?></td>
             <td><?=$row['dp_kuantitas']?></td>
             <td>
             <a href="edit.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id'] ?>"><button style="display:inline-block; border:2px solid #f44236; border-radius:5px; padding:3px;
@@ -74,7 +74,7 @@ table {
     </table>
     <br>
 </table>
-<h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= $pesanan_grandtotal['pesanan_grandtotal'] ?></h3>
+<h3 style="margin-top:7px;margin-bottom:7px;text-align:center">Grandtotal: Rp <?= number_format($pesanan_grandtotal['pesanan_grandtotal'] ,0,',','.')?></h3>
 <div style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
 <a href="index.php"><button style="background-color:#e0e0e0;border:2px solid #e0e0e0;border-radius:5px;padding:7px;width:130px;color:black;cursor:pointer">Tambah Pesanan</button></a>
 <a href="savepesanan.php?pesanan_id=<?= $pesanan_id?>"><button style="background-color:#f44236;border:2px solid #f44236;border-radius:5px;padding:7px;width:120px;color:white;cursor:pointer">Simpan Pesanan</button></a>

@@ -73,7 +73,7 @@ Minuman
                 <tr>
                 <td><?= $row['menu_nama']; ?></td>
                 <td style="text-align:center"><?= $row['menu_kategori']; ?></td>
-                <td style="text-align:center">Rp <?= $row['menu_harga']; ?></td>
+                <td style="text-align:center">Rp <?= number_format($row['menu_harga'],0,',','.'); ?></td>
                 <td>
                 <input type="number" name="dp_kuantitas[<?= $row['menu_id']; ?>]" min="0" max="10" value="<?= $_SESSION['dp_kuantitas'][$row['menu_id']] ?? 0 ?>"></td></tr>
                 <?php endforeach; ?> </table>
