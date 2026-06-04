@@ -6,7 +6,7 @@ if ($kategori != '') {
     $stmt->execute([':kategori' => $kategori]);
 }
 else {
-    $stmt = $conn->query("SELECT menu_id,menu_nama,menu_kategori,menu_harga FROM menu");
+    $stmt = $conn->query("SELECT menu_id,menu_nama,menu_kategori,menu_harga FROM menu where menu_status='Tersedia'");
 }
 $data = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 
