@@ -26,6 +26,10 @@ table {
     <?php
     require_once "..\config\database.php";
     $pesanan_id = $_GET['pesanan_id'];
+    $hapusTidakTersedia = $conn->prepare("DELETE dp FROM detail_pesanan dp JOIN menu m ON dp.menu_id = m.menu_id WHERE dp.pesanan_id = :pesanan_id AND m.menu_status != 'Tersedia'");
+    $hapusTidakTersedia->execute([':pesanan_id' => $pesanan_id]);
+
+    $stmt = $conn->prepare("SELECT dp.pesanan_id, m.menu_id, m.menu_nama, m.menu_kategori, m.menu_harga, dp.dp_kuantitas, dp.dp_total FROM detail_pesanan dp JOIN menu m ON dp.menu_id = m.menu_id WHERE dp.pesanan_id = :pesanan_id");
     $stmt = $conn->prepare(
         'Select dp.pesanan_id, m.menu_id, m.menu_nama, m.menu_kategori, m.menu_harga, dp.dp_kuantitas, 
         dp.dp_total from detail_pesanan dp join menu m on dp.menu_id = m.menu_id where dp.pesanan_id = :pesanan_id'
