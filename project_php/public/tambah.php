@@ -56,7 +56,6 @@ table {
             <th>Kategori</th>
             <th>Harga</th>
             <th>Jumlah</th>
-            <th>Subtotal</th>
             <th>Aksi</th>
         </tr>
         <?php foreach ($dp as $row): ?>
@@ -65,7 +64,6 @@ table {
             <td><?=$row['menu_kategori']?></td>
             <td>Rp <?=$row['menu_harga']?></td>
             <td><?=$row['dp_kuantitas']?></td>
-            <td><?=$row['dp_total']?></td>
             <td>
             <a href="edit.php?pesanan_id=<?= $row['pesanan_id']?>&menu_id=<?= $row['menu_id'] ?>"><button style="display:inline-block; border:2px solid #f44236; border-radius:5px; padding:3px;
             width:50px; text-align:center; color:black; text-decoration:none; cursor:pointer;">Edit</button></a>
